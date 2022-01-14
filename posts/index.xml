@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Somesh&#39;s Blog</title>
-    <link>https://somesh-banerjee.github.io/blogs/</link>
-    <description>Recent content on Somesh&#39;s Blog</description>
+    <title>Posts on Somesh&#39;s Blog</title>
+    <link>https://somesh-banerjee.github.io/blogs/posts/</link>
+    <description>Recent content in Posts on Somesh&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 14 Jan 2022 17:25:22 +0530</lastBuildDate><atom:link href="https://somesh-banerjee.github.io/blogs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Jan 2022 17:25:22 +0530</lastBuildDate><atom:link href="https://somesh-banerjee.github.io/blogs/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Log4shell</title>
       <link>https://somesh-banerjee.github.io/blogs/posts/log4shell/</link>
