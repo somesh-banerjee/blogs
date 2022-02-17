@@ -6,13 +6,13 @@
     <description>Recent content in Tags on Somesh&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Feb 2022 13:27:14 +0530</lastBuildDate><atom:link href="https://somesh-banerjee.github.io/blogs/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Jan 2022 17:25:22 +0530</lastBuildDate><atom:link href="https://somesh-banerjee.github.io/blogs/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>HackTheBox</title>
-      <link>https://somesh-banerjee.github.io/blogs/tags/hackthebox/</link>
-      <pubDate>Thu, 17 Feb 2022 13:27:14 +0530</pubDate>
+      <title>CVE</title>
+      <link>https://somesh-banerjee.github.io/blogs/tags/cve/</link>
+      <pubDate>Fri, 14 Jan 2022 17:25:22 +0530</pubDate>
       
-      <guid>https://somesh-banerjee.github.io/blogs/tags/hackthebox/</guid>
+      <guid>https://somesh-banerjee.github.io/blogs/tags/cve/</guid>
       <description></description>
       <content></content>
     </item>
@@ -20,7 +20,7 @@
     <item>
       <title>InfoSec</title>
       <link>https://somesh-banerjee.github.io/blogs/tags/infosec/</link>
-      <pubDate>Thu, 17 Feb 2022 13:27:14 +0530</pubDate>
+      <pubDate>Fri, 14 Jan 2022 17:25:22 +0530</pubDate>
       
       <guid>https://somesh-banerjee.github.io/blogs/tags/infosec/</guid>
       <description></description>
@@ -28,11 +28,11 @@
     </item>
     
     <item>
-      <title>CVE</title>
-      <link>https://somesh-banerjee.github.io/blogs/tags/cve/</link>
-      <pubDate>Fri, 14 Jan 2022 17:25:22 +0530</pubDate>
+      <title>HackTheBox</title>
+      <link>https://somesh-banerjee.github.io/blogs/tags/hackthebox/</link>
+      <pubDate>Fri, 15 Oct 2021 13:26:55 +0530</pubDate>
       
-      <guid>https://somesh-banerjee.github.io/blogs/tags/cve/</guid>
+      <guid>https://somesh-banerjee.github.io/blogs/tags/hackthebox/</guid>
       <description></description>
       <content></content>
     </item>

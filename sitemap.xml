@@ -3,53 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://somesh-banerjee.github.io/blogs/posts/cap/</loc>
-    <lastmod>2022-02-17T13:27:14+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://somesh-banerjee.github.io/blogs/tags/hackthebox/</loc>
-    <lastmod>2022-02-17T13:27:14+05:30</lastmod>
+    <loc>https://somesh-banerjee.github.io/blogs/tags/cve/</loc>
+    <lastmod>2022-01-14T17:25:22+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://somesh-banerjee.github.io/blogs/tags/infosec/</loc>
-    <lastmod>2022-02-17T13:27:14+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://somesh-banerjee.github.io/blogs/posts/</loc>
-    <lastmod>2022-02-17T13:27:14+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://somesh-banerjee.github.io/blogs/</loc>
-    <lastmod>2022-02-17T13:27:14+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://somesh-banerjee.github.io/blogs/tags/</loc>
-    <lastmod>2022-02-17T13:27:14+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://somesh-banerjee.github.io/blogs/posts/explore/</loc>
-    <lastmod>2022-02-17T13:26:55+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://somesh-banerjee.github.io/blogs/posts/spectra/</loc>
-    <lastmod>2022-02-17T13:26:43+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://somesh-banerjee.github.io/blogs/tags/cve/</loc>
     <lastmod>2022-01-14T17:25:22+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://somesh-banerjee.github.io/blogs/posts/log4shell/</loc>
     <lastmod>2022-01-14T17:25:22+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://somesh-banerjee.github.io/blogs/posts/</loc>
+    <lastmod>2022-01-14T17:25:22+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://somesh-banerjee.github.io/blogs/</loc>
+    <lastmod>2022-01-14T17:25:22+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://somesh-banerjee.github.io/blogs/tags/</loc>
+    <lastmod>2022-01-14T17:25:22+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://somesh-banerjee.github.io/blogs/posts/explore/</loc>
+    <lastmod>2021-10-15T13:26:55+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://somesh-banerjee.github.io/blogs/tags/hackthebox/</loc>
+    <lastmod>2021-10-15T13:26:55+05:30</lastmod>
   </url>
   
   <url>

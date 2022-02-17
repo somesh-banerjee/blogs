@@ -6,13 +6,8 @@
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="OS: Linux
-Points: 20
-Difficulty: Easy
-ip=10.10.10.242
-User solution The first thing is to do the nmap scan.
-┌──(kali㉿kali)-[~/HTB/Knife] └─$ ip=10.10.10.242 ┌──(kali㉿kali)-[~/HTB/Knife] └─$ ports=$(nmap -p- --min-rate=1000 -T4 $ip | grep ^[0-9] | cut -d &#39;/&#39; -f 1 | tr &#39;\n&#39; &#39;,&#39; | sed s/,$//) ┌──(kali㉿kali)-[~/HTB/Knife] └─$ nmap -sC -sV -p$ports $ip -oA nmap_result Starting Nmap 7.91 ( https://nmap.org ) at 2021-06-26 10:29 EDT Nmap scan report for 10.10.10.242 Host is up (0." />
-<meta name="keywords" content="Linux, knife, RCE" />
+<meta name="description" content="Solution to own HackTheBox Machine Knife (Linux, Easy, 20 points)" />
+<meta name="keywords" content="Linux, knife, RCE, GTFObins" />
 <meta name="robots" content="noodp" />
 <link rel="canonical" href="https://somesh-banerjee.github.io/blogs/posts/knife/" />
 
@@ -46,12 +41,7 @@ User solution The first thing is to do the nmap scan.
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Knife Machine">
-<meta property="og:description" content="OS: Linux
-Points: 20
-Difficulty: Easy
-ip=10.10.10.242
-User solution The first thing is to do the nmap scan.
-┌──(kali㉿kali)-[~/HTB/Knife] └─$ ip=10.10.10.242 ┌──(kali㉿kali)-[~/HTB/Knife] └─$ ports=$(nmap -p- --min-rate=1000 -T4 $ip | grep ^[0-9] | cut -d &#39;/&#39; -f 1 | tr &#39;\n&#39; &#39;,&#39; | sed s/,$//) ┌──(kali㉿kali)-[~/HTB/Knife] └─$ nmap -sC -sV -p$ports $ip -oA nmap_result Starting Nmap 7.91 ( https://nmap.org ) at 2021-06-26 10:29 EDT Nmap scan report for 10.10.10.242 Host is up (0." />
+<meta property="og:description" content="Solution to own HackTheBox Machine Knife (Linux, Easy, 20 points)" />
 <meta property="og:url" content="https://somesh-banerjee.github.io/blogs/posts/knife/" />
 <meta property="og:site_name" content="Somesh&#39;s Blog" />
 
