@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title> Hosting a CTF  :: Somesh&#39;s Blog</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="How I Hosted a Ctf for my School Club using a VM instance and CTFd repository" />
+<meta name="keywords" content="Linux, CTF, CTFd" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://somesh-banerjee.github.io/blogs/posts/hosting-ctf/" />
+
+
+
+
+<link rel="stylesheet" href="https://somesh-banerjee.github.io/blogs/assets/style.css">
+
+  <link rel="stylesheet" href="https://somesh-banerjee.github.io/blogs/assets/blue.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://somesh-banerjee.github.io/blogs/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://somesh-banerjee.github.io/blogs/img/favicon/blue.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="https://twitter.com/banerjee_somesh" />
+  
+    <meta name="twitter:creator" content="banerjee_somesh" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content=" Hosting a CTF ">
+<meta property="og:description" content="How I Hosted a Ctf for my School Club using a VM instance and CTFd repository" />
+<meta property="og:url" content="https://somesh-banerjee.github.io/blogs/posts/hosting-ctf/" />
+<meta property="og:site_name" content="Somesh&#39;s Blog" />
+
+  <meta property="og:image" content="https://somesh-banerjee.github.io/blogs/">
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2021-09-04 15:40:28 &#43;0530 IST" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="blue">
+
+
+<div class="container full headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/blogs/">
+  <div class="logo">
+    Somesh&#39;s Blog
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="https://somesh-banerjee.github.io/">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="https://somesh-banerjee.github.io/">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://somesh-banerjee.github.io/blogs/posts/hosting-ctf/">Hosting a CTF</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2021-09-04
+        
+      </span>
+    
+    
+      <span class="post-author">:: Somesh Banerjee</span>
+    
+    
+      <span class="post-reading-time">:: 2 min read (401 words)</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://somesh-banerjee.github.io/blogs/tags/infosec/">InfoSec</a>&nbsp;
+    
+    #<a href="https://somesh-banerjee.github.io/blogs/tags/ctf/">CTF</a>&nbsp;
+    
+  </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="introduction">Introduction<a href="#introduction" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>Creating a full-fledged platform to host a CTF is very time taking. Moreover, this task looks almost impossible if you are not a developer. This blog will tell how I created the CTF platform for my School InfoSec club using CTFd within a few minutes.</p>
+<h1 id="choosing-the-server">Choosing the Server<a href="#choosing-the-server" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>To host the platform, you need a server that will be accessible to everyone. For the server, you can create one from Digital Ocean. You have to decide what specifications you require based on the expected participants. In my case, I expected 100 participants, so I selected the following specifications:</p>
+<ul>
+<li>RAM: 8GB</li>
+<li>Cpu: 4vCPUs</li>
+<li>Storage: 100GB</li>
+<li>Version: Ubuntu 20.04 LTS x64</li>
+</ul>
+<p>After the instance is created, Digital Ocean will provide you with an IP address and password. You can log in to your server with the credentials using Putty</p>
+<h1 id="setting-up-ctf-platform">Setting up CTF Platform<a href="#setting-up-ctf-platform" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<ol>
+<li>
+<p>After logging in to the server, the first thing you need to do is update it and install the requirements. You will only need to install git, docker, and docker-compose.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt update
+sudo apt install docker docker-compose git
+</code></pre></div></li>
+<li>
+<p>Now we need to clone the <a href="https://github.com/CTFd/CTFd">CTFd</a> repo and move into it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/CTFd/CTFd
+cd CTFd
+</code></pre></div></li>
+<li>
+<p>Create a random key. This is used by the Application for security purpose. I am storing the key in the <code>.ctfd_secret_key</code> file.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">head -c <span style="color:#ae81ff">64</span> /dev/urandom &gt; .ctfd_secret_key
+</code></pre></div></li>
+<li>
+<p>(Optional) Change the number of workers in <code>docker-compose.yml</code> file. The higher the number the better it can manage traffic. In my case, I used 4 workers.</p>
+</li>
+<li>
+<p>Running the platform</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo docker-compose up
+</code></pre></div></li>
+</ol>
+<p>That&rsquo;s it, now your platform will be running in port 80 and 8080. You can test it from your machine by going to <code>localhost:8080</code> or using any other machine and going to the given IP.</p>
+<p>Now you need the rest of the setup from the platform. The guide for that setup is available at the Repo.</p>
+<p>The basic requirement for the platform is covered. But if you are hosting it at a global level, then you need to implement security feature like Rate limiting and Firewall to the server. You also need the get a domain for your IP from GoDaddy or somewhere else.</p>
+<h1 id="firewall-setup">Firewall Setup<a href="#firewall-setup" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>I will cover the basic steps required to setup a firewall which will only allow http/https and SSH traffic to the server.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt update
+sudo ufw allow <span style="color:#e6db74">&#39;Nginx Full&#39;</span>
+sudo ufw allow <span style="color:#e6db74">&#39;OpenSSH&#39;</span>
+sudo ufw enable
+</code></pre></div>
+      </div></div>
+
+  
+
+  
+  
+
+  
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2022 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://somesh-banerjee.github.io/blogs/assets/main.js"></script>
+<script src="https://somesh-banerjee.github.io/blogs/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
