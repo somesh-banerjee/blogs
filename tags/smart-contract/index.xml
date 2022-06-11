@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Smart-Contract on Somesh&#39;s Blog</title>
+    <link>https://somesh-banerjee.github.io/blogs/tags/smart-contract/</link>
+    <description>Recent content in Smart-Contract on Somesh&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 30 May 2022 15:55:13 +0530</lastBuildDate><atom:link href="https://somesh-banerjee.github.io/blogs/tags/smart-contract/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Erc Standards</title>
+      <link>https://somesh-banerjee.github.io/blogs/posts/erc-standards/</link>
+      <pubDate>Mon, 30 May 2022 15:55:13 +0530</pubDate>
+      
+      <guid>https://somesh-banerjee.github.io/blogs/posts/erc-standards/</guid>
+      <description>ERC Standards ERC stands for Ethereum Request for Comments. This documents contains rules for different token standards. If you want to create any Ethereum based token you have to follow this rules.
+Different ERC Standards Image Source: Blockchain Council
+ERC20 This is is the most common Token standard and is commonly used by ICOs. It is a fungible token where all the token holds the same value. This standard can be used as a currency.</description>
+      <content>&lt;h1 id=&#34;erc-standards&#34;&gt;ERC Standards&lt;/h1&gt;
+&lt;p&gt;ERC stands for Ethereum Request for Comments. This documents contains rules for different token standards. If you want to create any Ethereum based token you have to follow this rules.&lt;/p&gt;
+&lt;h1 id=&#34;different-erc-standards&#34;&gt;Different ERC Standards&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://somesh-banerjee.github.io/blogs/blogs/erc-s/1.jpg&#34; alt=&#34;&#34;&gt;
+Image Source: &lt;a href=&#34;https://www.blockchain-council.org/wp-content/uploads/2022/02/ERC-TOKEN.jpg&#34;&gt;Blockchain Council&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;erc20&#34;&gt;ERC20&lt;/h2&gt;
+&lt;p&gt;This is is the most common Token standard and is commonly used by ICOs. It is a fungible token where all the token holds the same value. This standard can be used as a currency. The basic rule for this standard are&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The tokens can be transferred from one account to another&lt;/li&gt;
+&lt;li&gt;The balance for each account can be checked.&lt;/li&gt;
+&lt;li&gt;The Total supply of the token can be checked.&lt;/li&gt;
+&lt;li&gt;The owner can approve a third party to spent some amount of his token&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;erc721&#34;&gt;ERC721&lt;/h2&gt;
+&lt;p&gt;This is the most basic standard for NFTs(Non Fungible Tokens). NFTs are unique and each token holds a different value. The smart contract keep track of the tokens with the help of Token ID. The token IDs are mapped to owner&amp;rsquo;s wallet address. Owner means the owner of that particular token.&lt;/p&gt;
+&lt;p&gt;Most digital assets like images, videos, 3D models are sold in the Metaverse marketplace as this NFT. The token cannot store the digital asset onchain as it will be pretty large. Instead it is stored somewhere else like IPFS or centralized server and the link to the asset is stored in the token as URI. The token mainly represents the ownership of that asset.&lt;/p&gt;
+&lt;p&gt;You can find my ERC721 Marketplace &lt;a href=&#34;https://metaverse-market.vercel.app/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;erc1155&#34;&gt;ERC1155&lt;/h2&gt;
+&lt;p&gt;This token standard is normally used in games where there are different kind of tokens with different quantity. Let say we have a have a game of collecting cards with two two types of cards as token: Common Cards and Rare Cards. The availability of the Common card is 100 and Rare is 20. If we treat each type of cards as ERC20 token then you can say that the ERC1155 is maintaining multiple ERC20 tokens.&lt;/p&gt;
+&lt;p&gt;Also let say in ERC1155 there are many tokens and each of their quantity / availability is 1, then we can say that the contract is similar to ERC721 where each token is unique.&lt;/p&gt;
+&lt;p&gt;In ERC1155, the smart contract keep tracks of token with the help of both Token ID and Account Address. It stores the number as how many accounts have the given token Id and how much each account has.&lt;/p&gt;
+&lt;h2 id=&#34;erc725&#34;&gt;ERC725&lt;/h2&gt;
+&lt;p&gt;This standard is used for creating digital identity. The identity contract can identify other contracts. This is required because in decentralized governance we need the identity of different users without using any centralized server.&lt;/p&gt;
+&lt;h1 id=&#34;implementing-the-token-standards&#34;&gt;Implementing the Token Standards&lt;/h1&gt;
+&lt;p&gt;The easiest way to implement ERC20, ERC721 and ERC1155 token is using &lt;a href=&#34;https://www.openzeppelin.com/contracts&#34;&gt;OpenZeppelin Contracts&lt;/a&gt;. Here the basic functionalities of all the standards are already written and tested. Your token will only inherit those contracts. You can also add your own functions as per the requirement. To start you go the wizard, and then select which standard you want to create. You can select what features you want in your contract like mintable, pausable, burnable, etc and it will be added. Once satisfied you can copy the code to remix and deploy it the network you want to.&lt;/p&gt;
+&lt;h1 id=&#34;what-are-eips&#34;&gt;What are EIPs&lt;/h1&gt;
+&lt;p&gt;Ethereum Improvement Proposals (EIPs) describes the standard of Ethereum platform. It says what steps need to follow to make a improvement in the token standards. While creating a new ERC standard the author has to follow these steps.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;References:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://101blockchains.com/erc-standards/&#34;&gt;101 Blockchains&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.blockchain-council.org/ethereum/erc-token-standards/&#34;&gt;Blockchain Council&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openzeppelin.com/contracts/4.x/&#34;&gt;OpenZeppelin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://eips.ethereum.org/EIPS/eip-1&#34;&gt;EIP-1&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>
