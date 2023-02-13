@@ -16,7 +16,7 @@
 
 <link rel="stylesheet" href="https://somesh-banerjee.github.io/blogs/assets/style.css">
 
-  <link rel="stylesheet" href="https://somesh-banerjee.github.io/blogs/assets/blue.css">
+  <link rel="stylesheet" href="https://somesh-banerjee.github.io/blogs/assets/green.css">
 
 
 
@@ -25,7 +25,7 @@
 
 <link rel="apple-touch-icon" href="https://somesh-banerjee.github.io/blogs/img/apple-touch-icon-192x192.png">
 
-  <link rel="shortcut icon" href="https://somesh-banerjee.github.io/blogs/img/favicon/blue.png">
+  <link rel="shortcut icon" href="https://somesh-banerjee.github.io/blogs/img/favicon/green.png">
 
 
 
@@ -65,7 +65,7 @@
 
 
 </head>
-<body class="blue">
+<body class="green">
 
 
 <div class="container full headings--one-size">
@@ -163,36 +163,36 @@
 <ol>
 <li>
 <p>After logging in to the server, the first thing you need to do is update it and install the requirements. You will only need to install git, docker, and docker-compose.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
-</span></span><span style="display:flex;"><span>sudo apt install docker docker-compose git
-</span></span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt update
+sudo apt install docker docker-compose git
+</code></pre></div></li>
 <li>
 <p>Now we need to clone the <a href="https://github.com/CTFd/CTFd">CTFd</a> repo and move into it.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/CTFd/CTFd
-</span></span><span style="display:flex;"><span>cd CTFd
-</span></span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/CTFd/CTFd
+cd CTFd
+</code></pre></div></li>
 <li>
 <p>Create a random key. This is used by the Application for security purpose. I am storing the key in the <code>.ctfd_secret_key</code> file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>head -c <span style="color:#ae81ff">64</span> /dev/urandom &gt; .ctfd_secret_key
-</span></span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">head -c <span style="color:#ae81ff">64</span> /dev/urandom &gt; .ctfd_secret_key
+</code></pre></div></li>
 <li>
 <p>(Optional) Change the number of workers in <code>docker-compose.yml</code> file. The higher the number the better it can manage traffic. In my case, I used 4 workers.</p>
 </li>
 <li>
 <p>Running the platform</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker-compose up
-</span></span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo docker-compose up
+</code></pre></div></li>
 </ol>
 <p>That&rsquo;s it, now your platform will be running in port 80 and 8080. You can test it from your machine by going to <code>localhost:8080</code> or using any other machine and going to the given IP.</p>
 <p>Now you need the rest of the setup from the platform. The guide for that setup is available at the Repo.</p>
 <p>The basic requirement for the platform is covered. But if you are hosting it at a global level, then you need to implement security feature like Rate limiting and Firewall to the server. You also need the get a domain for your IP from GoDaddy or somewhere else. You can check this <a href="https://medium.com/csictf/self-hosting-a-ctf-platform-ctfd-90f3f1611587">article</a> for more.</p>
 <h1 id="firewall-setup">Firewall Setup<a href="#firewall-setup" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
 <p>I will cover the basic steps required to setup a firewall which will only allow http/https and SSH traffic to the server.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
-</span></span><span style="display:flex;"><span>sudo ufw allow <span style="color:#e6db74">&#39;Nginx Full&#39;</span>
-</span></span><span style="display:flex;"><span>sudo ufw allow <span style="color:#e6db74">&#39;OpenSSH&#39;</span>
-</span></span><span style="display:flex;"><span>sudo ufw enable
-</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt update
+sudo ufw allow <span style="color:#e6db74">&#39;Nginx Full&#39;</span>
+sudo ufw allow <span style="color:#e6db74">&#39;OpenSSH&#39;</span>
+sudo ufw enable
+</code></pre></div>
       </div></div>
 
   
@@ -210,7 +210,7 @@
   <div class="footer__inner">
     
       <div class="copyright">
-        <span>© 2022 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>© 2023 Powered by <a href="http://gohugo.io">Hugo</a></span>
     
         <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
       </div>

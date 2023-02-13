@@ -2,25 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://somesh-banerjee.github.io/blogs/posts/erc-standards/</loc>
-    <lastmod>2022-05-30T15:55:13+05:30</lastmod>
+    <loc>https://somesh-banerjee.github.io/blogs/posts/erc-standards-p2/</loc>
+    <lastmod>2023-01-12T20:08:49+05:30</lastmod>
   </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/tags/erc-token-standards/</loc>
-    <lastmod>2022-05-30T15:55:13+05:30</lastmod>
+    <lastmod>2023-01-12T20:08:49+05:30</lastmod>
   </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/posts/</loc>
-    <lastmod>2022-05-30T15:55:13+05:30</lastmod>
+    <lastmod>2023-01-12T20:08:49+05:30</lastmod>
   </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/tags/smart-contract/</loc>
-    <lastmod>2022-05-30T15:55:13+05:30</lastmod>
+    <lastmod>2023-01-12T20:08:49+05:30</lastmod>
   </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/tags/solidity/</loc>
-    <lastmod>2022-05-30T15:55:13+05:30</lastmod>
+    <lastmod>2023-01-12T20:08:49+05:30</lastmod>
   </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/</loc>
-    <lastmod>2022-05-30T15:55:13+05:30</lastmod>
+    <lastmod>2023-01-12T20:08:49+05:30</lastmod>
   </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/tags/</loc>
+    <lastmod>2023-01-12T20:08:49+05:30</lastmod>
+  </url><url>
+    <loc>https://somesh-banerjee.github.io/blogs/posts/erc-standards/</loc>
     <lastmod>2022-05-30T15:55:13+05:30</lastmod>
   </url><url>
     <loc>https://somesh-banerjee.github.io/blogs/tags/cve/</loc>

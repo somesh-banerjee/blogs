@@ -6,7 +6,49 @@
     <description>Recent content in ERC Token Standards on Somesh&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 May 2022 15:55:13 +0530</lastBuildDate><atom:link href="https://somesh-banerjee.github.io/blogs/tags/erc-token-standards/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Jan 2023 20:08:49 +0530</lastBuildDate><atom:link href="https://somesh-banerjee.github.io/blogs/tags/erc-token-standards/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Erc Standards Part 2</title>
+      <link>https://somesh-banerjee.github.io/blogs/posts/erc-standards-p2/</link>
+      <pubDate>Thu, 12 Jan 2023 20:08:49 +0530</pubDate>
+      
+      <guid>https://somesh-banerjee.github.io/blogs/posts/erc-standards-p2/</guid>
+      <description>In my last post on ERC standards, I discussed the basic ERC standards like ERC20, ERC721, ERC1155, etc. In this post, I will go over some more ERC standards finalized by the community.
+ERC 1363: Payable Token​ Regarding ERC20 tokens, we generally use them for payment purposes like paying for an NFT, a service, etc. But after we transfer the ERC20 tokens, somebody on the other side has to initiate the next transaction.</description>
+      <content>&lt;p&gt;In my last &lt;a href=&#34;../erc-standards&#34;&gt;post&lt;/a&gt; on ERC standards, I discussed the basic ERC standards like ERC20, ERC721, ERC1155, etc. In this post, I will go over some more ERC standards finalized by the community.&lt;/p&gt;
+&lt;h1 id=&#34;erc-1363-payable-token&#34;&gt;ERC 1363: Payable Token​&lt;/h1&gt;
+&lt;p&gt;Regarding ERC20 tokens, we generally use them for payment purposes like paying for an NFT, a service, etc. But after we transfer the ERC20 tokens, somebody on the other side has to initiate the next transaction. This results in paying the gas price twice for a single process(by process, I mean a set of steps like paying and getting an NFT). The payable token is introduced to solve this issue, where the ERC 1363 contract initiates the next transaction after payment is made.&lt;/p&gt;
+&lt;h1 id=&#34;erc-2981-nft-royalty-standard&#34;&gt;ERC 2981: NFT Royalty Standard​&lt;/h1&gt;
+&lt;p&gt;This ERC is developed to implement royalty features in the marketplaces. It is an extension for ERC721 and ERC1155 to give royalties to the creators. The standard introduces the following function to return royalty details like how much to transfer and whom to transfer.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;royaltyInfo&lt;/span&gt;(
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;uint256&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;_tokenId&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;uint256&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;_salePrice&lt;/span&gt;
+) &lt;span style=&#34;color:#a6e22e&#34;&gt;external&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;view&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;returns&lt;/span&gt; (
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;address&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;receiver&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;uint256&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;royaltyAmount&lt;/span&gt;
+);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If we use this standard, royalty is not guaranteed as the ERC only gives royalty information. Implementing it relies on the marketplace where the transfer is happening.&lt;/p&gt;
+&lt;h1 id=&#34;erc-3525-semi-fungible-token&#34;&gt;ERC 3525: Semi-Fungible Token​&lt;/h1&gt;
+&lt;p&gt;Semi Fungible token is similar to ERC 721 tokens, where each type of token has a unique token Id, but two different token Ids are considered fungible if they share the same slot. This standard identifies the tokens by &amp;lt;ID, SLOT, VALUE&amp;gt;. The VALUE property tells the total supply of the token ID. We can transfer tokens between different IDs if they have the same slot.&lt;/p&gt;
+&lt;h1 id=&#34;erc-4519-non-fungible-tokens-tied-to-physical-assets&#34;&gt;ERC 4519: Non-Fungible Tokens Tied to Physical Assets​&lt;/h1&gt;
+&lt;p&gt;This token standard is built for smart physical devices with an address in the network. The ERC 721 only tracks ownership records and not usage rights. EIP 4519 was proposed to solve this issue, where the device, the token, and the user interact with each other to track all the records. To understand in-depth, read the &lt;a href=&#34;https://eips.ethereum.org/assets/eip-4519/sensors-21-03119.pdf&#34;&gt;paper&lt;/a&gt; published in Sensors journal.&lt;/p&gt;
+&lt;h1 id=&#34;erc-4907-rental-nft&#34;&gt;ERC 4907: Rental NFT​&lt;/h1&gt;
+&lt;p&gt;This standard is an extension of ERC 721. Here each NFT has an owner and a user. These two properties can be two different wallet addresses. The user will have limited control over the NFT, like he can&amp;rsquo;t transfer the NFT. The owner can set whom to make the user and for what duration, like rent.&lt;/p&gt;
+&lt;h1 id=&#34;erc-5023-shareable-nft&#34;&gt;ERC 5023: Shareable NFT​&lt;/h1&gt;
+&lt;p&gt;Shareable NFTs can be implemented in both ERC 721 and ERC 1155. In this standard, an NFT is shared with another user/wallet by reminting the same token and sending the newly minted token to the new owner. The freshly minted token represents the same digital asset but has a unique ID. The original token remains with the old owner.&lt;/p&gt;
+&lt;h1 id=&#34;erc-5192-minimal-soul-bound-token&#34;&gt;ERC 5192: Minimal soul bound token​&lt;/h1&gt;
+&lt;p&gt;This standard is an extension of ERC721. SoulBound token, as you can understand from the name, is a token bound to a single soul or wallet. To implement soulbond tokens,  the transfer function of the ERC721 token is disabled.&lt;/p&gt;
+&lt;h1 id=&#34;erc-5484-consensual-soul-bound-tokens&#34;&gt;ERC 5484: Consensual Soul bound Tokens​&lt;/h1&gt;
+&lt;p&gt;This standard is an extension of ERC721 and is almost similar to ERC 5192 but with one addition, i.e., the property of burn authorization. Burn Authorization means who can burn the token. It can be only the issuer, only the receiver, or both of them, or neither of them.&lt;/p&gt;
+&lt;h1 id=&#34;erc-5528-refundable-fungible-token&#34;&gt;ERC 5528: Refundable Fungible Token​&lt;/h1&gt;
+&lt;p&gt;This standard is an extension of ERC 20 tokens. When we send ERC 20 tokens for a task, and that task fails or is not completed, we don&amp;rsquo;t get our tokens back automatically. In ERC 5528, an escrow contract is used to solve this issue. Let&amp;rsquo;s understand this with a token swap example. The seller creates an escrow contract with a given condition.​ Both buyer and seller send the token to the escrow contract. If the requirement is fulfilled, then tokens are transferred to the respective receiver.​ If it fails, the buyer can withdraw the tokens submitted by him.​&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;References:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://eips.ethereum.org/erc&#34;&gt;ERC | Ethereum Improvement Proposals&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    </item>
+    
     <item>
       <title>Erc Standards</title>
       <link>https://somesh-banerjee.github.io/blogs/posts/erc-standards/</link>
