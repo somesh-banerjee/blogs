@@ -1,54 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Solidity on Somesh&#39;s Blog</title>
-    <link>https://somesh-banerjee.github.io/blogs/tags/solidity/</link>
-    <description>Recent content in Solidity on Somesh&#39;s Blog</description>
+    <title>Solidity-Vulnerabilities on Somesh&#39;s Blog</title>
+    <link>https://somesh-banerjee.github.io/blogs/tags/solidity-vulnerabilities/</link>
+    <description>Recent content in Solidity-Vulnerabilities on Somesh&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 12 Jan 2023 20:08:49 +0530</lastBuildDate><atom:link href="https://somesh-banerjee.github.io/blogs/tags/solidity/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Erc Standards Part 2</title>
-      <link>https://somesh-banerjee.github.io/blogs/posts/erc-standards-p2/</link>
-      <pubDate>Thu, 12 Jan 2023 20:08:49 +0530</pubDate>
-      
-      <guid>https://somesh-banerjee.github.io/blogs/posts/erc-standards-p2/</guid>
-      <description>In my last post on ERC standards, I discussed the basic ERC standards like ERC20, ERC721, ERC1155, etc. In this post, I will go over some more ERC standards finalized by the community.
-ERC 1363: Payable Token​ Regarding ERC20 tokens, we generally use them for payment purposes like paying for an NFT, a service, etc. But after we transfer the ERC20 tokens, somebody on the other side has to initiate the next transaction.</description>
-      <content>&lt;p&gt;In my last &lt;a href=&#34;../erc-standards&#34;&gt;post&lt;/a&gt; on ERC standards, I discussed the basic ERC standards like ERC20, ERC721, ERC1155, etc. In this post, I will go over some more ERC standards finalized by the community.&lt;/p&gt;
-&lt;h1 id=&#34;erc-1363-payable-token&#34;&gt;ERC 1363: Payable Token​&lt;/h1&gt;
-&lt;p&gt;Regarding ERC20 tokens, we generally use them for payment purposes like paying for an NFT, a service, etc. But after we transfer the ERC20 tokens, somebody on the other side has to initiate the next transaction. This results in paying the gas price twice for a single process(by process, I mean a set of steps like paying and getting an NFT). The payable token is introduced to solve this issue, where the ERC 1363 contract initiates the next transaction after payment is made.&lt;/p&gt;
-&lt;h1 id=&#34;erc-2981-nft-royalty-standard&#34;&gt;ERC 2981: NFT Royalty Standard​&lt;/h1&gt;
-&lt;p&gt;This ERC is developed to implement royalty features in the marketplaces. It is an extension for ERC721 and ERC1155 to give royalties to the creators. The standard introduces the following function to return royalty details like how much to transfer and whom to transfer.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;royaltyInfo&lt;/span&gt;(
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;uint256&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;_tokenId&lt;/span&gt;,
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;uint256&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;_salePrice&lt;/span&gt;
-) &lt;span style=&#34;color:#a6e22e&#34;&gt;external&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;view&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;returns&lt;/span&gt; (
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;address&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;receiver&lt;/span&gt;,
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;uint256&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;royaltyAmount&lt;/span&gt;
-);
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If we use this standard, royalty is not guaranteed as the ERC only gives royalty information. Implementing it relies on the marketplace where the transfer is happening.&lt;/p&gt;
-&lt;h1 id=&#34;erc-3525-semi-fungible-token&#34;&gt;ERC 3525: Semi-Fungible Token​&lt;/h1&gt;
-&lt;p&gt;Semi Fungible token is similar to ERC 721 tokens, where each type of token has a unique token Id, but two different token Ids are considered fungible if they share the same slot. This standard identifies the tokens by &amp;lt;ID, SLOT, VALUE&amp;gt;. The VALUE property tells the total supply of the token ID. We can transfer tokens between different IDs if they have the same slot.&lt;/p&gt;
-&lt;h1 id=&#34;erc-4519-non-fungible-tokens-tied-to-physical-assets&#34;&gt;ERC 4519: Non-Fungible Tokens Tied to Physical Assets​&lt;/h1&gt;
-&lt;p&gt;This token standard is built for smart physical devices with an address in the network. The ERC 721 only tracks ownership records and not usage rights. EIP 4519 was proposed to solve this issue, where the device, the token, and the user interact with each other to track all the records. To understand in-depth, read the &lt;a href=&#34;https://eips.ethereum.org/assets/eip-4519/sensors-21-03119.pdf&#34;&gt;paper&lt;/a&gt; published in Sensors journal.&lt;/p&gt;
-&lt;h1 id=&#34;erc-4907-rental-nft&#34;&gt;ERC 4907: Rental NFT​&lt;/h1&gt;
-&lt;p&gt;This standard is an extension of ERC 721. Here each NFT has an owner and a user. These two properties can be two different wallet addresses. The user will have limited control over the NFT, like he can&amp;rsquo;t transfer the NFT. The owner can set whom to make the user and for what duration, like rent.&lt;/p&gt;
-&lt;h1 id=&#34;erc-5023-shareable-nft&#34;&gt;ERC 5023: Shareable NFT​&lt;/h1&gt;
-&lt;p&gt;Shareable NFTs can be implemented in both ERC 721 and ERC 1155. In this standard, an NFT is shared with another user/wallet by reminting the same token and sending the newly minted token to the new owner. The freshly minted token represents the same digital asset but has a unique ID. The original token remains with the old owner.&lt;/p&gt;
-&lt;h1 id=&#34;erc-5192-minimal-soul-bound-token&#34;&gt;ERC 5192: Minimal soul bound token​&lt;/h1&gt;
-&lt;p&gt;This standard is an extension of ERC721. SoulBound token, as you can understand from the name, is a token bound to a single soul or wallet. To implement soulbond tokens,  the transfer function of the ERC721 token is disabled.&lt;/p&gt;
-&lt;h1 id=&#34;erc-5484-consensual-soul-bound-tokens&#34;&gt;ERC 5484: Consensual Soul bound Tokens​&lt;/h1&gt;
-&lt;p&gt;This standard is an extension of ERC721 and is almost similar to ERC 5192 but with one addition, i.e., the property of burn authorization. Burn Authorization means who can burn the token. It can be only the issuer, only the receiver, or both of them, or neither of them.&lt;/p&gt;
-&lt;h1 id=&#34;erc-5528-refundable-fungible-token&#34;&gt;ERC 5528: Refundable Fungible Token​&lt;/h1&gt;
-&lt;p&gt;This standard is an extension of ERC 20 tokens. When we send ERC 20 tokens for a task, and that task fails or is not completed, we don&amp;rsquo;t get our tokens back automatically. In ERC 5528, an escrow contract is used to solve this issue. Let&amp;rsquo;s understand this with a token swap example. The seller creates an escrow contract with a given condition.​ Both buyer and seller send the token to the escrow contract. If the requirement is fulfilled, then tokens are transferred to the respective receiver.​ If it fails, the buyer can withdraw the tokens submitted by him.​&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;References:&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://eips.ethereum.org/erc&#34;&gt;ERC | Ethereum Improvement Proposals&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</content>
-    </item>
-    
+    <lastBuildDate>Wed, 08 Jun 2022 23:35:09 +0530</lastBuildDate><atom:link href="https://somesh-banerjee.github.io/blogs/tags/solidity-vulnerabilities/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Solidity Vulnerabilities</title>
       <link>https://somesh-banerjee.github.io/blogs/posts/solidity-vulnerabilities/</link>
@@ -261,52 +219,6 @@ contract Auction &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/crytic/not-so-smart-contracts&#34;&gt;(Not So) Smart Contracts&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://medium.com/coinmonks/smart-contracts-common-vulnerabilities-solidity-e64c5506b7f4&#34;&gt;Smart Contracts common vulnerabilities (solidity)&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</content>
-    </item>
-    
-    <item>
-      <title>Erc Standards</title>
-      <link>https://somesh-banerjee.github.io/blogs/posts/erc-standards/</link>
-      <pubDate>Mon, 30 May 2022 15:55:13 +0530</pubDate>
-      
-      <guid>https://somesh-banerjee.github.io/blogs/posts/erc-standards/</guid>
-      <description>ERC Standards ERC stands for Ethereum Request for Comments. This documents contains rules for different token standards. If you want to create any Ethereum based token you have to follow this rules.
-Different ERC Standards Image Source: Blockchain Council
-ERC20 This is is the most common Token standard and is commonly used by ICOs. It is a fungible token where all the token holds the same value. This standard can be used as a currency.</description>
-      <content>&lt;h1 id=&#34;erc-standards&#34;&gt;ERC Standards&lt;/h1&gt;
-&lt;p&gt;ERC stands for Ethereum Request for Comments. This documents contains rules for different token standards. If you want to create any Ethereum based token you have to follow this rules.&lt;/p&gt;
-&lt;h1 id=&#34;different-erc-standards&#34;&gt;Different ERC Standards&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;https://somesh-banerjee.github.io/blogs/blogs/erc-s/1.jpg&#34; alt=&#34;&#34;&gt;
-Image Source: &lt;a href=&#34;https://www.blockchain-council.org/wp-content/uploads/2022/02/ERC-TOKEN.jpg&#34;&gt;Blockchain Council&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;erc20&#34;&gt;ERC20&lt;/h2&gt;
-&lt;p&gt;This is is the most common Token standard and is commonly used by ICOs. It is a fungible token where all the token holds the same value. This standard can be used as a currency. The basic rule for this standard are&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;The tokens can be transferred from one account to another&lt;/li&gt;
-&lt;li&gt;The balance for each account can be checked.&lt;/li&gt;
-&lt;li&gt;The Total supply of the token can be checked.&lt;/li&gt;
-&lt;li&gt;The owner can approve a third party to spent some amount of his token&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;erc721&#34;&gt;ERC721&lt;/h2&gt;
-&lt;p&gt;This is the most basic standard for NFTs(Non Fungible Tokens). NFTs are unique and each token holds a different value. The smart contract keep track of the tokens with the help of Token ID. The token IDs are mapped to owner&amp;rsquo;s wallet address. Owner means the owner of that particular token.&lt;/p&gt;
-&lt;p&gt;Most digital assets like images, videos, 3D models are sold in the Metaverse marketplace as this NFT. The token cannot store the digital asset onchain as it will be pretty large. Instead it is stored somewhere else like IPFS or centralized server and the link to the asset is stored in the token as URI. The token mainly represents the ownership of that asset.&lt;/p&gt;
-&lt;p&gt;You can find my ERC721 Marketplace &lt;a href=&#34;https://metaverse-market.vercel.app/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;erc1155&#34;&gt;ERC1155&lt;/h2&gt;
-&lt;p&gt;This token standard is normally used in games where there are different kind of tokens with different quantity. Let say we have a have a game of collecting cards with two two types of cards as token: Common Cards and Rare Cards. The availability of the Common card is 100 and Rare is 20. If we treat each type of cards as ERC20 token then you can say that the ERC1155 is maintaining multiple ERC20 tokens.&lt;/p&gt;
-&lt;p&gt;Also let say in ERC1155 there are many tokens and each of their quantity / availability is 1, then we can say that the contract is similar to ERC721 where each token is unique.&lt;/p&gt;
-&lt;p&gt;In ERC1155, the smart contract keep tracks of token with the help of both Token ID and Account Address. It stores the number as how many accounts have the given token Id and how much each account has.&lt;/p&gt;
-&lt;h2 id=&#34;erc725&#34;&gt;ERC725&lt;/h2&gt;
-&lt;p&gt;This standard is used for creating digital identity. The identity contract can identify other contracts. This is required because in decentralized governance we need the identity of different users without using any centralized server.&lt;/p&gt;
-&lt;h1 id=&#34;implementing-the-token-standards&#34;&gt;Implementing the Token Standards&lt;/h1&gt;
-&lt;p&gt;The easiest way to implement ERC20, ERC721 and ERC1155 token is using &lt;a href=&#34;https://www.openzeppelin.com/contracts&#34;&gt;OpenZeppelin Contracts&lt;/a&gt;. Here the basic functionalities of all the standards are already written and tested. Your token will only inherit those contracts. You can also add your own functions as per the requirement. To start you go the wizard, and then select which standard you want to create. You can select what features you want in your contract like mintable, pausable, burnable, etc and it will be added. Once satisfied you can copy the code to remix and deploy it the network you want to.&lt;/p&gt;
-&lt;h1 id=&#34;what-are-eips&#34;&gt;What are EIPs&lt;/h1&gt;
-&lt;p&gt;Ethereum Improvement Proposals (EIPs) describes the standard of Ethereum platform. It says what steps need to follow to make a improvement in the token standards. While creating a new ERC standard the author has to follow these steps.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;References:&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://101blockchains.com/erc-standards/&#34;&gt;101 Blockchains&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.blockchain-council.org/ethereum/erc-token-standards/&#34;&gt;Blockchain Council&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.openzeppelin.com/contracts/4.x/&#34;&gt;OpenZeppelin&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://eips.ethereum.org/EIPS/eip-1&#34;&gt;EIP-1&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </content>
     </item>

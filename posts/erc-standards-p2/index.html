@@ -9,24 +9,31 @@
 <meta name="description" content="In my last post on ERC standards, I discussed the basic ERC standards like ERC20, ERC721, ERC1155, etc. In this post, I will go over some more ERC standards finalized by the community.
 ERC 1363: Payable Token​ Regarding ERC20 tokens, we generally use them for payment purposes like paying for an NFT, a service, etc. But after we transfer the ERC20 tokens, somebody on the other side has to initiate the next transaction." />
 <meta name="keywords" content="Solidity, Ethereum, Smart-Contract, ERC, ERC Token Standards" />
-<meta name="robots" content="noodp" />
+
+  <meta name="robots" content="noodp" />
+
 <link rel="canonical" href="https://somesh-banerjee.github.io/blogs/posts/erc-standards-p2/" />
 
 
 
 
-<link rel="stylesheet" href="https://somesh-banerjee.github.io/blogs/assets/style.css">
-
-  <link rel="stylesheet" href="https://somesh-banerjee.github.io/blogs/assets/green.css">
 
 
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://somesh-banerjee.github.io/blogs/styles.css">
 
 
 
 
-<link rel="apple-touch-icon" href="https://somesh-banerjee.github.io/blogs/img/apple-touch-icon-192x192.png">
 
-  <link rel="shortcut icon" href="https://somesh-banerjee.github.io/blogs/img/favicon/green.png">
+
+
+  <link rel="shortcut icon" href="https://somesh-banerjee.github.io/blogs/img/theme-colors/green.png">
+  <link rel="apple-touch-icon" href="https://somesh-banerjee.github.io/blogs/img/theme-colors/green.png">
 
 
 
@@ -47,10 +54,12 @@ ERC 1363: Payable Token​ Regarding ERC20 tokens, we generally use them for pay
 <meta property="og:url" content="https://somesh-banerjee.github.io/blogs/posts/erc-standards-p2/" />
 <meta property="og:site_name" content="Somesh&#39;s Blog" />
 
+  
+  
   <meta property="og:image" content="https://somesh-banerjee.github.io/blogs/">
 
-<meta property="og:image:width" content="2048">
-<meta property="og:image:height" content="1024">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
 
 
   <meta property="article:published_time" content="2023-01-12 20:08:49 &#43;0530 IST" />
@@ -83,30 +92,33 @@ ERC 1363: Payable Token​ Regarding ERC20 tokens, we generally use them for pay
 
     </div>
     
-      <div class="menu-trigger">menu</div>
-    
-  </div>
-  
-    <nav class="menu">
-  <ul class="menu__inner menu__inner--desktop">
-    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
       
         
           <li><a href="https://somesh-banerjee.github.io/">About</a></li>
         
       
       
-    
+    </ul>
+  </li>
+</ul>
 
     
-  </ul>
-
-  <ul class="menu__inner menu__inner--mobile">
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
     
       
-        <li><a href="https://somesh-banerjee.github.io/">About</a></li>
+        
+          <li><a href="https://somesh-banerjee.github.io/" >About</a></li>
+        
       
-    
+      
     
   </ul>
 </nav>
@@ -117,34 +129,22 @@ ERC 1363: Payable Token​ Regarding ERC20 tokens, we generally use them for pay
 
   <div class="content">
     
-<div class="post">
+<article class="post">
   <h1 class="post-title">
-    <a href="https://somesh-banerjee.github.io/blogs/posts/erc-standards-p2/">Erc Standards Part 2</a></h1>
-  <div class="post-meta">
-    
-      <span class="post-date">
-        2023-01-12
-        
-      </span>
-    
-    
-      <span class="post-author">:: Somesh Banerjee</span>
-    
-    
-      <span class="post-reading-time">:: 4 min read (684 words)</span>
-    
-  </div>
+    <a href="https://somesh-banerjee.github.io/blogs/posts/erc-standards-p2/">Erc Standards Part 2</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2023-01-12</time><span class="post-author">Somesh Banerjee</span><span class="post-reading-time">4 min read (684 words)</span></div>
 
   
-  <span class="post-tags">
-    
-    #<a href="https://somesh-banerjee.github.io/blogs/tags/solidity/">Solidity</a>&nbsp;
-    
-    #<a href="https://somesh-banerjee.github.io/blogs/tags/smart-contract/">Smart-Contract</a>&nbsp;
-    
-    #<a href="https://somesh-banerjee.github.io/blogs/tags/erc-token-standards/">ERC Token Standards</a>&nbsp;
-    
-  </span>
+    <span class="post-tags">
+      
+      #<a href="https://somesh-banerjee.github.io/blogs/tags/solidity/">Solidity</a>&nbsp;
+      
+      #<a href="https://somesh-banerjee.github.io/blogs/tags/smart-contract/">Smart-Contract</a>&nbsp;
+      
+      #<a href="https://somesh-banerjee.github.io/blogs/tags/erc-token-standards/">ERC Token Standards</a>&nbsp;
+      
+    </span>
   
   
 
@@ -189,10 +189,10 @@ ERC 1363: Payable Token​ Regarding ERC20 tokens, we generally use them for pay
   
 
   
-  
+    
 
   
-</div>
+</article>
 
   </div>
 
@@ -201,17 +201,19 @@ ERC 1363: Payable Token​ Regarding ERC20 tokens, we generally use them for pay
   <div class="footer__inner">
     
       <div class="copyright">
-        <span>© 2023 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>© 2023 Powered by <a href="https://gohugo.io">Hugo</a></span>
     
-        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
       </div>
   </div>
 </footer>
 
-<script src="https://somesh-banerjee.github.io/blogs/assets/main.js"></script>
-<script src="https://somesh-banerjee.github.io/blogs/assets/prism.js"></script>
 
 
+
+
+
+<script type="text/javascript" src="/blogs/bundle.min.js"></script>
 
 
 

