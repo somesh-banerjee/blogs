@@ -1,20 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Single Page Apps for GitHub Pages</title>
     <script type="text/javascript">
-      var pathSegmentsToKeep = 1;
+      var pathSegmentsToKeep = 1
 
-      var l = window.location;
-      var newPath = l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/');
-      var newQueryString = 'blog=' + l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/');
-      
-      var newUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + newPath + '?' + newQueryString + l.hash;
-      
-      l.replace(newUrl);
+      var l = window.location
+      var newPath = l.pathname
+        .split('/')
+        .slice(0, 1 + pathSegmentsToKeep)
+        .join('/')
+      var blogId = l.pathname.split('/')[pathSegmentsToKeep + 1]
+      var newUrl =
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + newPath + '?' + 'blog=' + blogId + l.hash
+
+      l.replace(newUrl)
     </script>
   </head>
-  <body>
-  </body>
+  <body></body>
 </html>
