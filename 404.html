@@ -4,16 +4,10 @@
     <meta charset="utf-8" />
     <title>Single Page Apps for GitHub Pages</title>
     <script type="text/javascript">
-      var pathSegmentsToKeep = 1
-
       var l = window.location
-      var newPath = l.pathname
-        .split('/')
-        .slice(0, 1 + pathSegmentsToKeep)
-        .join('/')
-      var blogId = l.pathname.split('/')[pathSegmentsToKeep + 1]
+      var blogId = l.pathname.match(/\d+/g)[0]
       var newUrl =
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + newPath + '?' + 'blog=' + blogId + l.hash
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/blogs?' + 'blog=' + blogId + l.hash
 
       l.replace(newUrl)
     </script>
